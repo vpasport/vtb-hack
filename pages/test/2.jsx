@@ -1,14 +1,16 @@
 import { useRouter } from 'next/router';
 
+import { Button } from '@components';
+
 const TestPaage = () => {
 	const router = useRouter();
 
 	return (
 		<>
 			<div>
-				<button onClick={() => router.push('/test')}>
+				<Button type='default' onClick={() => router.push('/test')}>
 					TO OTHER PAGE
-				</button>
+				</Button>
 			</div>
 		</>
 	);

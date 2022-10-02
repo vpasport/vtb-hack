@@ -2,9 +2,11 @@ import { useRouter } from 'next/router';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { wrapper } from '../../store';
-import { selectAuthState, setAuthState } from '../../store/slices/userSlice';
-import { selectOfferState, getOfferById } from '../../store/slices/offersSlice';
+import { wrapper } from '@store';
+import { selectAuthState, setAuthState } from '@store/slices/userSlice';
+import { selectOfferState, getOfferById } from '@store/slices/offersSlice';
+
+import { Button } from '@components';
 
 const TestPaage = () => {
 	const dispatch = useDispatch();
@@ -17,23 +19,26 @@ const TestPaage = () => {
 		<>
 			<div>
 				<span>{JSON.stringify(auth)}</span>
-				<button onClick={() => dispatch(setAuthState(!auth))}>
+				<Button
+					type='default'
+					onClick={() => dispatch(setAuthState(!auth))}>
 					UPDATE AUTH
-				</button>
+				</Button>
 			</div>
 			<div>
 				<span>{JSON.stringify(offer)}</span>
-				<button
+				<Button
+					type='custom'
 					onClick={() =>
 						dispatch(getOfferById(offer ? offer.id + 1 : 1))
 					}>
-					UPDATE OFFER
-				</button>
+					UPDATE AUTH
+				</Button>
 			</div>
 			<div>
-				<button onClick={() => router.push('/test/2')}>
+				<Button type='default' onClick={() => router.push('/test/2')}>
 					TO OTHER PAGE
-				</button>
+				</Button>
 			</div>
 		</>
 	);
