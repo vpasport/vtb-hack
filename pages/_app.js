@@ -1,9 +1,9 @@
 import NextNProgress from 'nextjs-progressbar';
 import { Provider } from 'react-redux';
 
-import { wrapper } from '../store';
+import { wrapper } from '@store';
 
-import '../styles/globals.css';
+import '@styles/globals.scss';
 
 function MyApp({ Component, ...rest }) {
   const { store, props } = wrapper.useWrappedStore(rest);
