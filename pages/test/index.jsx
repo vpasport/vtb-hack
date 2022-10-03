@@ -1,0 +1,53 @@
+import { useRouter } from 'next/router';
+
+import { useSelector, useDispatch } from 'react-redux';
+
+import { wrapper } from '../../store';
+import { selectAuthState, setAuthState } from '../../store/slices/userSlice';
+import { selectOfferState, getOfferById } from '../../store/slices/offersSlice';
+
+const TestPaage = () => {
+	const dispatch = useDispatch();
+	const router = useRouter();
+
+	const auth = useSelector(selectAuthState);
+	const offer = useSelector(selectOfferState);
+
+	return (
+		<>
+			<div>
+				<span>{JSON.stringify(auth)}</span>
+				<button onClick={() => dispatch(setAuthState(!auth))}>
+					UPDATE AUTH
+				</button>
+			</div>
+			<div>
+				<span>{JSON.stringify(offer)}</span>
+				<button
+					onClick={() =>
+						dispatch(getOfferById(offer ? offer.id + 1 : 1))
+					}>
+					UPDATE OFFER
+				</button>
+			</div>
+			<div>
+				<button onClick={() => router.push('/test/2')}>
+					TO OTHER PAGE
+				</button>
+			</div>
+		</>
+	);
+};
+
+export const getServerSideProps = wrapper.getServerSideProps(
+	(store) =>
+		async ({ params }) => {
+			await store.dispatch(getOfferById(0));
+
+			return {
+				props: {},
+			};
+		}
+);
+
+export default TestPaage;
