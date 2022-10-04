@@ -8,6 +8,8 @@ import { selectOfferState, getOfferById } from '@store/slices/offersSlice';
 
 import { Button } from '@components';
 
+import styles from './style.module.scss';
+
 const TestPaage = () => {
 	const dispatch = useDispatch();
 	const router = useRouter();
@@ -39,6 +41,11 @@ const TestPaage = () => {
 				<Button type='default' onClick={() => router.push('/test/2')}>
 					TO OTHER PAGE
 				</Button>
+			</div>
+			<div>
+				<span className={styles.test}>
+					йцукенгшщзхъфыва пролджэячсмитьбю
+				</span>a
 			</div>
 		</>
 	);
