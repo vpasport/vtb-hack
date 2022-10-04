@@ -16,8 +16,6 @@ const Island = ({
 	price = null,
 	progress = null,
 }) => {
-	console.log(progress);
-
 	return (
 		<div className={styles.island}>
 			{!!progress && (
@@ -34,8 +32,6 @@ const Island = ({
 			<div className={styles.island_circle}>
 				<Union className={styles.island_circle_union} />
 			</div>
-			<div className={styles.progress_margin} />
-			{/* {!!progress && <div className={styles.progress_margin} />} */}
 			{badge && <span className={styles.island_badge}>{badge}</span>}
 			<div className={styles.island_content}>
 				<div className={styles.island_content_text}>
