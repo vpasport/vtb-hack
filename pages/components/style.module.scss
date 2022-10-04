@@ -1,5 +1,19 @@
+@import "../../styles/variables.scss";
+
 .root {
     width: 100vw;
     height: 100vh;
     padding: 40px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+
+    & .button {
+        border-color: $light_blue;
+        color: $light_blue;
+    }
+}
+
+.custom-notification {
+    color: $light_blue;
 }

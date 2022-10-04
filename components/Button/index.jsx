@@ -11,7 +11,7 @@ Button.propTypes = {
 	type: PropTypes.oneOf(Object.keys(buttonTypes)).isRequired,
 	children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
 		.isRequired,
-	onclick: PropTypes.func,
+	onClick: PropTypes.func,
 };
 
 export { Button };
