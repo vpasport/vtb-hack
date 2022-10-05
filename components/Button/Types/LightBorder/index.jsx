@@ -1,7 +1,7 @@
 import { toClassName } from '@utils/toClassName';
 import styles from './style.module.scss';
 
-const BorderButon = ({
+const LightBorderButon = ({
 	onClick = () => {},
 	className = '',
 	children = null,
@@ -21,4 +21,4 @@ const BorderButon = ({
 	);
 };
 
-export { BorderButon };
+export { LightBorderButon };

@@ -1,3 +1,7 @@
+@import "../style.module.scss";
+
 .button {
-    background-color: blue;
+    border: none;
+    background-color: $light_blue;
+    color: #ffffff;
 }
