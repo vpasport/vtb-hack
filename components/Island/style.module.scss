@@ -19,6 +19,7 @@
         left: 0;
         height: 20px;
         width: 100%;
+        background-color: rgba($color: #ffffff, $alpha: 0.2);
 
         &__filled {
             transition: width 0.2s;

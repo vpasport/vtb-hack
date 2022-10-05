@@ -15,6 +15,7 @@ const Island = ({
 	buttonText = 'Button',
 	price = null,
 	progress = null,
+	onButtonClick = () => {},
 }) => {
 	return (
 		<div className={styles.island}>
@@ -43,7 +44,9 @@ const Island = ({
 					</span>
 				</div>
 				<div className={styles.island_content_footer}>
-					<Button type='border'>{buttonText}</Button>
+					<Button type='border' onClick={onButtonClick}>
+						{buttonText}
+					</Button>
 					{price && (
 						<div className={styles.island_content_footer_price}>
 							<RiCopperCoinFill
@@ -67,6 +70,7 @@ Island.propTypes = {
 	description: PropTypes.PropTypes.string.isRequired,
 	buttonText: PropTypes.string.isRequired,
 	price: PropTypes.number,
+	onButtonClick: PropTypes.func,
 };
 
 export { Island };
