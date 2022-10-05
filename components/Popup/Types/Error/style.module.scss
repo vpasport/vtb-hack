@@ -1,5 +1,5 @@
 @import "../style.module.scss";
-.popup-success {
+.popup-error {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,7 +11,7 @@
         align-items: center;
         width: 96px;
         height: 96px;
-        background: $light_green;
+        background: $light_red;
         border-radius: 50%;
     }
     &_description {
