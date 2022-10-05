@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Island, Notification, Button } from '@components';
+import { Island, Notification, Button, Popup } from '@components';
 import { useNotifications } from '@hooks';
 
 import styles from './style.module.scss';
@@ -9,8 +9,16 @@ const TestPaage = () => {
 	const [progress, setProgress] = useState(0);
 	const { pushNotifications } = useNotifications();
 
+	const [isOpen, setIsOpen] = useState(false);
+
+	const toggleModal = () =>
+	{
+		console.log("Кнопка для попапа")
+    	setIsOpen(!isOpen);
+	};
+	
 	return (
-		<div className={styles.root}>
+		<div className={ styles.root }>
 			<div>
 				<input
 					type='range'
@@ -40,7 +48,20 @@ const TestPaage = () => {
 					display: 'flex',
 					flexDirection: 'column',
 					gap: 10,
-				}}>
+				} }>
+				<Button type='border' className={styles.button} onClick={toggleModal}>
+					Вызывать попап
+				</Button>
+				<Popup
+					type='success'
+        			isOpen={isOpen}
+        			toggle={toggleModal}
+        			contentLabel="Success"
+        			closeTimeoutMS={0}
+        			ariaHideApp={false}
+				>
+					It is Success!
+      			</Popup>
 				<h3>Уведомления:</h3>
 				<Button
 					type='border'

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import * as buttonTypes from './Types';
 
-const Button = (props) => {
+const Button = (props) =>
+{
 	return React.createElement(buttonTypes[props.type], props);
 };
 
