@@ -1,6 +1,6 @@
-import Modal from "react-modal";
+import Modal from 'react-modal';
 
-import styles from "./style.module.scss";
+import styles from './style.module.scss';
 
 const SuccessPopup = ({ children,  isOpen, toggle, ...props }) => {
 
