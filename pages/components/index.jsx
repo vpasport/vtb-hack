@@ -46,14 +46,21 @@ const TestPaage = () => {
 					type='success'
 					button='border'
 					buttonText='Вызвать success попап'
-					className={styles.button}
+					classNameButton={styles.button}
         			contentLabel="Success"
-        			closeTimeoutMS={0}
-        			ariaHideApp={false}
 				>
 					It is Success!
       			</Popup>
 				
+				<Popup
+					type='error'
+					button='border'
+					buttonText='Вызвать error попап'
+					classNameButton={styles.button}
+        			contentLabel="Error"
+				>
+					It is Error!
+      			</Popup>
 				
 				<h3>Уведомления:</h3>
 				<Button

@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '../Button';
 
@@ -8,22 +8,18 @@ const Popup = (props) =>
 {
     console.log(props)
     const [isOpen, setIsOpen] = useState(false);
-    // const propsPopup = {
-    //     ...props,
-    //     isOpen,
-    //     toggle: () => setIsOpen(!isOpen)
-    // }
+    const propsPopup = {
+        ...props,
+        isOpen,
+        toggle: () => setIsOpen(!isOpen)
+    }
+ 
+
 
     return (
         <>
-            <Button type={props.button} className={props.className} onClick={() => setIsOpen(!isOpen)}>{props.buttonText }</Button>
-            { React.createElement(popupTypes[props.type],
-                {
-                    ...props,
-                    isOpen,
-                    toggle: () => setIsOpen(!isOpen)
-                }
-            ) } 
+            <Button type={props.button} className={props.classNameButton} onClick={() => setIsOpen(!isOpen)}>{props.buttonText }</Button>
+            { React.createElement(popupTypes[props.type], propsPopup)} 
         </>
     )
 };

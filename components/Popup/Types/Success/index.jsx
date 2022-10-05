@@ -10,7 +10,9 @@ const SuccessPopup = ({ children, isOpen, toggle, ...props }) => {
 			isOpen={isOpen}
 			onRequestClose={toggle}
 			className={styles.popup}
-			overlayClassName={styles.popup_overlay}
+			overlayClassName={ styles.popup_overlay }
+			closeTimeoutMS={0}
+        	ariaHideApp={false}
             { ...props }>
             
             <div className={ styles['popup-success'] }>
