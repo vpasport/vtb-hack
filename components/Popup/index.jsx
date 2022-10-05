@@ -1,20 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import { Button } from '../Button';
 
 import * as popupTypes from './Types';
 
 const Popup = (props) =>
 {
-    console.log(popupTypes, props.type, props)
-    // return React.createElement(popupTypes[props.type], props);
-    return <div>{ props.children }</div>
+    console.log(props)
+    const [isOpen, setIsOpen] = useState(false);
+    const propsPopup = {
+        ...props,
+        isOpen,
+        toggle: () => setIsOpen(!isOpen)
+    }
+ 
+
+
+    return (
+        <>
+            <Button type={props.button} className={props.classNameButton} onClick={() => setIsOpen(!isOpen)}>{props.buttonText }</Button>
+            { React.createElement(popupTypes[props.type], propsPopup)} 
+        </>
+    )
 };
 
 Popup.propTypes = {
 	type: PropTypes.oneOf(Object.keys(popupTypes)).isRequired,
 	children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
-    toggle: PropTypes.func,
-    isOpen: PropTypes.bool,
 };
 
 export { Popup };
