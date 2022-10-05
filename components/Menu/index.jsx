@@ -15,7 +15,7 @@ const Menu = () => {
 	const [selected, setSelected] = useState(null);
 
 	useEffect(() => {
-		routes.forEach((el, idx) =>
+		  routes.forEach((el, idx) =>
 			new RegExp(`^${el.path}`, 'g').test(router.pathname)
 				? setSelected(idx)
 				: setSelected(null)
