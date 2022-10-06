@@ -11,13 +11,14 @@ import styles from './style.module.scss'
 const Popup = (props) =>
 {
     const [isOpen, setIsOpen] = useState(false);
-
+    console.log(props)
     const propsContentPopup = {
         ...props,
         toggle: () => setIsOpen(!isOpen)
     }
 
-    const stylesPopup = props.type === 'confirm' ? styles.popup + ' ' + styles.confirm : styles.popup;
+    const stylesPopup = props.type === 'confirm' ? styles.popup + ' ' + styles.confirm
+        : (props.type === 'custom' ? styles.popup + ' ' + styles.custom : styles.popup);
     
     return (
         <>

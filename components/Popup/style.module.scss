@@ -28,6 +28,12 @@
     height: 300px;
 }
 
+.custom {
+    max-width: 500px;
+    width: auto;
+    height: auto;
+}
+
 .ReactModal__Overlay {
     opacity: 0;
     transition: opacity 1s linear;

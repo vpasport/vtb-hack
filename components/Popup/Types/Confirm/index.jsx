@@ -3,7 +3,7 @@ import { Button } from '@components';
 
 import styles from './style.module.scss';
 
-const ConfirmPopup = ({ children, toggle, buttonPopupConfirm, buttonPopupDelete,}) => {
+const ConfirmPopup = ({ children, toggle, buttonPopupConfirm, buttonPopupDelete}) => {
 	return (
 		<div className={ styles['popup-confirm'] }>
             <div className={ styles['popup-confirm_circle'] }>

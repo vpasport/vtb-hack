@@ -1,5 +1,3 @@
-import Modal from 'react-modal';
-
 import {Cross} from './Cross';
 
 import styles from './style.module.scss';
