@@ -11,7 +11,7 @@ import styles from './style.module.scss'
 const Popup = (props) =>
 {
     const [isOpen, setIsOpen] = useState(false);
-    console.log(props)
+  
     const propsContentPopup = {
         ...props,
         toggle: () => setIsOpen(!isOpen)
