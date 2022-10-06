@@ -1,25 +1,40 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import Modal from 'react-modal';
+
 import { Button } from '../Button';
 
 import * as popupTypes from './Types';
 
+import styles from './style.module.scss'
+
 const Popup = (props) =>
 {
-    console.log(props)
     const [isOpen, setIsOpen] = useState(false);
-    const propsPopup = {
+    console.log(props)
+    const propsContentPopup = {
         ...props,
-        isOpen,
         toggle: () => setIsOpen(!isOpen)
     }
- 
 
-
+    const stylesPopup = props.type === 'confirm' ? styles.popup + ' ' + styles.confirm
+        : (props.type === 'custom' ? styles.popup + ' ' + styles.custom : styles.popup);
+    
     return (
         <>
-            <Button type={props.button} className={props.classNameButton} onClick={() => setIsOpen(!isOpen)}>{props.buttonText }</Button>
-            { React.createElement(popupTypes[props.type], propsPopup)} 
+            <Button type={ props.button } className={ props.classNameButton } onClick={ () => setIsOpen(!isOpen) }>{ props.buttonText }</Button>
+            
+            <Modal
+                isOpen={isOpen}
+                onRequestClose={propsContentPopup.toggle}
+                className={stylesPopup}
+                overlayClassName={ styles.popup_overlay }
+                closeTimeoutMS={0}
+                ariaHideApp={false}
+                { ...props }>
+                    { React.createElement(popupTypes[props.type], propsContentPopup)} 
+            </Modal>
+            
         </>
     )
 };
