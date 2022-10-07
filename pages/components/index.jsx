@@ -9,7 +9,7 @@ const TestPaage = () => {
 			<IslandBlock />
 			<NotificationsBlock />
 			<ButtonsBlock />
-			{/* <PopupBlock /> */}
+			<PopupBlock />
 			<InputsBlock/>	
 		</div>
 		

@@ -11,8 +11,9 @@ const Input = ({ type = 'default', ...props }) =>
 
 Input.propTypes = {
 	type: PropTypes.oneOf(Object.keys(inputTypes)),
-    value: PropTypes.oneOfType[PropTypes.string, PropTypes.number, PropTypes.bool],
-    onChange: PropTypes.func
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
+    onChange: PropTypes.func,
+    onClick: PropTypes.func
 };
 
 export { Input };

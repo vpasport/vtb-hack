@@ -41,7 +41,7 @@ const Popup = (props) =>
 
 Popup.propTypes = {
 	type: PropTypes.oneOf(Object.keys(popupTypes)).isRequired,
-	children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
+	children: PropTypes.oneOfType([PropTypes.element, PropTypes.array,  PropTypes.string]).isRequired,
 };
 
 export { Popup };

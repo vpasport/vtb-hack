@@ -21,4 +21,10 @@
         cursor: auto;
         box-shadow: $box-shadow-input;
     }
+    &-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        font-size: 12px;
+    }
 }

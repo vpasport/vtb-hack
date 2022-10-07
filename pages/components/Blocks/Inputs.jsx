@@ -4,7 +4,8 @@ import { Input } from '@components';
 
 const InputsBlock = () =>
 {
-    const [defaultInput, setDeafultInput] = useState('jgfyryc')
+    const [defaultInput, setDeafultInput] = useState('');
+	const [checkbox, setCheckbox] = useState(true)
 	return (
 		<div
 				style={{
@@ -14,8 +15,11 @@ const InputsBlock = () =>
 					gap: 10,
             } }>
             <h3>Инпуты:</h3>
-            <Input  value={ defaultInput } onChange={ (e) => setDeafultInput(e.target.value) } placeholder='Your name' />        
-			<Input  disabled value={ 'Disabled input' }/>
+            <Input  value={ defaultInput } onChange={ (e) => setDeafultInput(e.target.value) } placeholder='Input Default' description={''} />        
+			<Input  disabled value={ 'Disabled input Default' }/>
+			<Input  type="checkbox" text={ 'Checkbox' } value={checkbox} onClick={ (e) => setCheckbox(e.target.checked) }/>
+			<Input disabled type="checkbox" text={ 'Checkbox disabled' } value={true} />
+			
 		</div>
 	);
 };
