@@ -6,6 +6,8 @@ import {
 	TextEditorBlock,
 } from './Blocks';
 
+import { Loader } from '@components';
+
 import styles from './style.module.scss';
 
 const TestPaage = ({}) => {
@@ -16,6 +18,7 @@ const TestPaage = ({}) => {
 			<ButtonsBlock />
 			<PopupBlock />
 			<TextEditorBlock />
+			<Loader />
 		</div>
 	);
 };
