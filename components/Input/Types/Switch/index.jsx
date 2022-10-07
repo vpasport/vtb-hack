@@ -3,10 +3,10 @@ import styles from './style.module.scss';
 const SwitchInput = ({value, text, ...props }) => {
 
     console.log(props)
-    // const stylesContainer = props.disabled ? styles.container  + ' ' + styles['container-disabled'] :  styles.container;
+    const stylesSwitch = props.disabled ? styles.switch  + ' ' + styles['switch-disabled'] :  styles.switch;
     return (
         
-        <label className={styles.switch}><p className={styles.switch_text}>{text}</p> 
+        <label className={stylesSwitch}><p className={styles.switch_text}>{text}</p> 
             <input type="checkbox" checked={value} {...props} />
             <span className={styles.slider + ' ' + styles.round}></span>
         </label>

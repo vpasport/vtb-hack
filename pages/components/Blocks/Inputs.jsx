@@ -35,7 +35,7 @@ const InputsBlock = () =>
 				<Input disabled type="switch" text={ 'Switch' } value={swicthValue} onChange={ (e) => setSwitchValue(e.target.checked) }/>
 
 				<Input type="dropdown" text={ 'Dropdown' } value={swicthValue} onChange={ (e) => setSwitchValue(e.target.checked) }/>
-				<Input type="dropdown"  multiple={true} text={ 'Dropdown & select' } />
+				{/* <Input type="dropdown"  multiple={true} text={ 'Dropdown & select' } /> */}
 			
 		</div>
 	);
