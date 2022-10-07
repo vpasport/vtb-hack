@@ -1,28 +1,42 @@
 @import "../style.module.scss";
 
 .menu-item {
+    position: relative;
     transition: all 0.2s;
-    width: 100%;
+    width: 220px;
     min-width: 55px;
     height: 55px;
     border-radius: 12px;
     display: flex;
     // justify-content: center;
+    flex-direction: row;
+    overflow: hidden;
     justify-content: flex-start;
     align-items: center;
     transition: all 0.2s;
     flex-direction: row;
     padding: 15px;
+    // background-color: red;
     &-icon {
+        position: absolute;
+        left: 12.5px;
         transition: all 0.2s;
         width: 30px;
         height: 30px;
         color: rgba($color: #ffffff, $alpha: 0.8);
     }
-    &__full {
-        justify-content: flex-start;
-        gap: 10px;
+    & span {
+        position: absolute;
+        left: 55px;
+        visibility: hidden;
         color: #ffffff;
+    }
+    &__full {
+        // justify-content: flex-start;
+        & span {
+            visibility: visible;
+        }
+        gap: 10px;
         font-weight: 600;
     }
     &__selected {

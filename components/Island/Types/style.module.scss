@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "../../../styles/variables.scss";
 
 .island {
     box-sizing: border-box;
@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
+    box-shadow: $box-shadow-input;
 
     &_progress {
         position: absolute;
@@ -70,6 +71,7 @@
     }
 
     &_content {
+        z-index: 1;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -109,6 +111,13 @@
             gap: 16px;
             align-items: center;
 
+            &_button {
+                width: 100px;
+                color: white;
+                border-color: white;
+                height: 44px;
+            }
+
             &_price {
                 display: flex;
                 flex-direction: row;
@@ -120,7 +129,7 @@
                 gap: 4px;
 
                 &_icon {
-                    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.1);
+                    // box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.1);
                     fill: #ffdb0d;
                 }
             }
