@@ -3,22 +3,14 @@ import PropTypes from 'prop-types';
 
 import * as inputTypes from './Types';
 
-const Input = ({ type = 'default', ...props }) =>
-{
-
-    let propsInput = {
-        ...props,
-    }
-    if(type === 'default'){
-        propsInput = {
-            ...propsInput,
-            type: props.typedefault ? props.typedefault : 'text'
+const Input = ({ type = 'default', typedefault = 'text', ...props }) =>
+{    
+    return React.createElement(inputTypes[type],
+        {
+            ...props,
+            type: props.typedefault
         }
-    
-        delete propsInput.typedefault;
-    }
-    
-	return React.createElement(inputTypes[type], propsInput);
+    );
 };
 
 Input.propTypes = {
