@@ -1,20 +1,25 @@
-import { Popup } from '@components';
-import { NotificationsBlock, IslandBlock, ButtonsBlock, PopupBlock } from './Blocks';
+import {
+	NotificationsBlock,
+	IslandBlock,
+	ButtonsBlock,
+	PopupBlock,
+	TextEditorBlock,
+} from './Blocks';
+
+import { Loader } from '@components';
 
 import styles from './style.module.scss';
 
-const TestPaage = () => {
-	
+const TestPaage = ({}) => {
 	return (
-		<div className={ styles.root }>
-			
+		<div className={styles.root}>
 			<IslandBlock />
 			<NotificationsBlock />
 			<ButtonsBlock />
-			<PopupBlock/>
-			
+			<PopupBlock />
+			<TextEditorBlock />
+			<Loader />
 		</div>
-		
 	);
 };
 
