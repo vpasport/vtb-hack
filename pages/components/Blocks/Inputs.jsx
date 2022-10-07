@@ -11,7 +11,7 @@ const InputsBlock = () =>
 	const [search, setSearch] = useState('');
 	const [defaultInput, setDeafultInput] = useState('');
 	const [checkbox, setCheckbox] = useState(true)
-	const [swicthValue, setSwitchValue] = useState(false)
+	const [swicthValue, setSwitchValue] = useState(true)
 
 	return (
 		<div
@@ -32,7 +32,10 @@ const InputsBlock = () =>
 				<Input type="checkbox" text={ 'Checkbox' } value={checkbox} onChange={ (e) => setCheckbox(e.target.checked) }/>
 				<Input disabled type="checkbox" text={ 'Checkbox disabled' } value={true} />
 
-				<Input type="switch" text={ 'Switch' } value={swicthValue} onChange={ (e) => setSwitchValue(e.target.checked) }/>
+				<Input disabled type="switch" text={ 'Switch' } value={swicthValue} onChange={ (e) => setSwitchValue(e.target.checked) }/>
+
+				<Input type="dropdown" text={ 'Dropdown' } value={swicthValue} onChange={ (e) => setSwitchValue(e.target.checked) }/>
+				<Input type="dropdown"  multiple={true} text={ 'Dropdown & select' } />
 			
 		</div>
 	);

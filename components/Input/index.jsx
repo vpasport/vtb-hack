@@ -23,7 +23,7 @@ const Input = ({ type = 'default', ...props }) =>
 
 Input.propTypes = {
 	type: PropTypes.oneOf(Object.keys(inputTypes)),
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool, PropTypes.array]),
     onChange: PropTypes.func,
     onClick: PropTypes.func,
     rightIcon: PropTypes.func,
