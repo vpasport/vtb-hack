@@ -3,3 +3,4 @@ export { Island } from './Island';
 export { Menu } from './Menu';
 export { Notification } from './Notification';
 export { Popup } from './Popup';
+export { Editor, Text } from './TextEditor';
