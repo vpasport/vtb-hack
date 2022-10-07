@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import NextNProgress from 'nextjs-progressbar';
 import { Provider } from 'react-redux';
 
@@ -9,6 +10,7 @@ import '@styles/globals.css';
 import '@styles/globals.scss';
 
 function MyApp({ Component, ...rest }) {
+  const { pathname } = useRouter();
   const { store, props } = wrapper.useWrappedStore(rest);
 
   return (
@@ -16,7 +18,7 @@ function MyApp({ Component, ...rest }) {
       <NotificationContextProvider>
         <NextNProgress />
         <div className='root' data-test='test'>
-          <Menu />
+          {pathname !== '/404' && <Menu />}
           <div className='content'>
             <Component {...props.pageProps} />
           </div>
