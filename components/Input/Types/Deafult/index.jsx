@@ -11,32 +11,14 @@ const DefaultInput = ({
     const stylesInput = props.disabled ? styles.input  + ' ' + styles['disabled'] :  styles.input;
 
     return (
-        <>
-
-            {props.description && (
-                <div>  
-                    <div className={stylesInput}>
-                        {!!LeftIcon && <LeftIcon className={styles.input_icon__left}/>}  
-                        <input type={type}  {...props} />
-                        {!!RightIcon && <RightIcon className={styles.input_icon__right} />}  
-                    </div>
-                    <p className={styles.input_description}>{ props.description }</p>
-                </div>
-                
-                
-            )}
-            {!props.description && (
-                <div className={ styles['input-wrapper']}>
-                    <div className={stylesInput}>
-                        {!!LeftIcon && <LeftIcon className={styles.input_icon__left}/>}  
-                        <input type={type}  {...props} />
-                        {!!RightIcon && <RightIcon className={styles.input_icon__right} />}  
-                    </div>
-                </div>  
-            )} 
-        </>
-        
-        
+        <div className={styles.wrapper}>  
+            <div className={stylesInput}>
+                {!!LeftIcon && <LeftIcon className={styles.input_icon__left}/>}  
+                <input type={type}  {...props} />
+                {!!RightIcon && <RightIcon className={styles.input_icon__right} />}  
+            </div>
+            <p className={styles.input_description}>{ props.description }</p>
+        </div>         
     );
 };
 

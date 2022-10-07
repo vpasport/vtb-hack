@@ -1,0 +1,25 @@
+@import '../../styles/variables.scss';
+.tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &_headline {
+        margin: 0;
+    }
+    &_container {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    &_wrapper {
+        display: flex;
+    }
+    &_description {
+        box-sizing: border-box;
+        border: 2px solid $light_blue;
+        border-radius: 8px;
+        width: 30%;
+        padding: 20px;
+    }
+}
