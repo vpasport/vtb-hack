@@ -1,8 +1,18 @@
 import { useState } from 'react';
+// import dynamic from 'next/dynamic';
+
 import { BiSearchAlt2 } from 'react-icons/bi';
 import {RiLockPasswordFill} from 'react-icons/ri';
 
 import { Input } from '@components';
+
+// const Input = dynamic(
+// 	() => import('@components/Input').then((mod) => mod.Input),
+// 	{
+// 		ssr: false,
+// 		loading: ({ ...props }) => <p {...props}>Loading...</p>,
+// 	}
+// );
 
 const InputsBlock = () =>
 {
@@ -10,8 +20,22 @@ const InputsBlock = () =>
 	const [num, setNum] = useState('');
 	const [search, setSearch] = useState('');
 	const [defaultInput, setDeafultInput] = useState('');
-	const [checkbox, setCheckbox] = useState(true)
-	const [swicthValue, setSwitchValue] = useState(true)
+	const [checkbox, setCheckbox] = useState(true);
+	const [swicthValue, setSwitchValue] = useState(true);
+	const [itemsDropdown] = useState([
+		{
+			value: 'dog',
+			label: 'Dog',
+		},
+		{
+			value: 'cat',
+			label: 'Cat'
+		},
+		{
+			value: 'chicken',
+			label: 'Chicken'
+		}
+	])
 
 	return (
 		<div
@@ -34,8 +58,8 @@ const InputsBlock = () =>
 
 				<Input type="switch" text={ 'Switch' } value={swicthValue} onChange={ (e) => setSwitchValue(e.target.checked) }/>
 
-				<Input type="dropdown" text={ 'Dropdown' } value={swicthValue} onChange={ (e) => setSwitchValue(e.target.checked) }/>
-				{/* <Input type="dropdown"  multiple={true} text={ 'Dropdown & select' } /> */}
+				<Input type="dropdown" dropdownName={ 'Dropdown pets list:' }  items={itemsDropdown} />
+				<Input type="dropdown"  multiple dropdownName={ 'Dropdown & select' }  items={itemsDropdown}  />
 			
 		</div>
 	);
