@@ -14,7 +14,9 @@
 			"@hooks/*": ["hooks/*"],
 			"@hooks": ["hooks"],
 			"@utils/*": ["utils/*"],
-			"@utils": ["utils"]
+			"@utils": ["utils"],
+			"@public/*": ["public/*"],
+			"@public": ["public"]
 		}
 	}
 }
