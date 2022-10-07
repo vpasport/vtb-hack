@@ -6,7 +6,7 @@ const CheckboxInput = ({...props }) => {
     return (
         
         <label className={stylesContainer}  >{props.text}
-            <input type="checkbox" {...props} checked={props.value} />
+            <input type="checkbox" checked={props.value} {...props}  />
             <span className={styles.checkmark} ></span>
         </label>
    );

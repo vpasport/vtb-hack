@@ -15,7 +15,12 @@ const DefaultInput = ({
 
             {props.description && (
                 <div>  
-                    <input className={styles.input} type={type} {...props} />
+                    <div className={stylesInput}>
+                        {!!LeftIcon && <LeftIcon className={styles.input_icon__left}/>}  
+                        <input type={type}  {...props} />
+                        {!!RightIcon && <RightIcon className={styles.input_icon__right} />}  
+                    </div>
+                    <p className={styles.input_description}>{ props.description }</p>
                 </div>
                 
                 
@@ -27,8 +32,6 @@ const DefaultInput = ({
                         <input type={type}  {...props} />
                         {!!RightIcon && <RightIcon className={styles.input_icon__right} />}  
                     </div>
-                    
-                    <span>{ props.description }</span>
                 </div>  
             )} 
         </>
