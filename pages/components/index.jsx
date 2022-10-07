@@ -4,10 +4,9 @@ import {
 	ButtonsBlock,
 	PopupBlock,
 	InputsBlock,
-	TextEditorBlock
+	TextEditorBlock,
+	LoaderBlock,
 } from './Blocks';
-
-import { Loader } from '@components';
 
 import styles from './style.module.scss';
 
@@ -18,9 +17,9 @@ const TestPaage = ({}) => {
 			<NotificationsBlock />
 			<ButtonsBlock />
 			<PopupBlock />
-			<InputsBlock/>	
+			<InputsBlock />
 			<TextEditorBlock />
-			<Loader />
+			<LoaderBlock />
 		</div>
 	);
 };
