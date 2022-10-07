@@ -3,7 +3,8 @@ import {
 	IslandBlock,
 	ButtonsBlock,
 	PopupBlock,
-	TextEditorBlock,
+	InputsBlock,
+	TextEditorBlock
 } from './Blocks';
 
 import { Loader } from '@components';
@@ -17,6 +18,7 @@ const TestPaage = ({}) => {
 			<NotificationsBlock />
 			<ButtonsBlock />
 			<PopupBlock />
+			<InputsBlock/>	
 			<TextEditorBlock />
 			<Loader />
 		</div>

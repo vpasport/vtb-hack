@@ -11,7 +11,7 @@ import styles from './style.module.scss'
 const Popup = (props) =>
 {
     const [isOpen, setIsOpen] = useState(false);
-    console.log(props)
+  
     const propsContentPopup = {
         ...props,
         toggle: () => setIsOpen(!isOpen)
@@ -41,7 +41,7 @@ const Popup = (props) =>
 
 Popup.propTypes = {
 	type: PropTypes.oneOf(Object.keys(popupTypes)).isRequired,
-	children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
+	children: PropTypes.oneOfType([PropTypes.element, PropTypes.array,  PropTypes.string]).isRequired,
 };
 
 export { Popup };
