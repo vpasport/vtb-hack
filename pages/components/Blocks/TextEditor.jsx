@@ -1,13 +1,13 @@
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
-import { TextViewer } from '@components';
+import { TextViewer, Loader } from '@components';
 
 const TextEditor = dynamic(
 	() => import('@components/TextEditor').then((mod) => mod.TextEditor),
 	{
 		ssr: false,
-		loading: ({ ...props }) => <p {...props}>Loading...</p>,
+		loading: () => <Loader />,
 	}
 );
 
