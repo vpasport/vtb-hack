@@ -1,7 +1,5 @@
-import { Button } from '@components';
+import { Button, Svg } from '@components';
 import { toClassName } from '@utils';
-
-import { Union } from '../Union';
 
 import { RiCopperCoinFill } from 'react-icons/ri';
 import styles from './style.module.scss';
@@ -30,7 +28,7 @@ const DefaultIsland = ({
 				</div>
 			)}
 			<div className={styles.island_circle}>
-				<Union className={styles.island_circle_union} />
+				<Svg type='union' className={styles.island_circle_union} />
 			</div>
 			{badge && <span className={styles.island_badge}>{badge}</span>}
 			<div className={styles.island_content}>

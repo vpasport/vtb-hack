@@ -15,3 +15,4 @@ export { TextViewer, TextEditor } from './TextEditor';
 export * as Forms from './Forms';
 export { ToolBar } from './Toolbar';
 export { User } from './User';
+export { Svg } from './Svg';

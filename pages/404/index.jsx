@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { Icon404 } from './Icon404';
+import { Svg } from '@components';
 import styles from './style.module.scss';
 
 export default function FourOhFour() {
@@ -7,7 +7,7 @@ export default function FourOhFour() {
 	return (
 		<div className={styles.root}>
 			<h1>404 - Page Not Found</h1>
-			<Icon404 className={styles.icon} />
+			<Svg type='error404' className={styles.icon} />
 			<span className={styles.link} onClick={() => router.back()}>
 				<b>Go back</b>
 			</span>

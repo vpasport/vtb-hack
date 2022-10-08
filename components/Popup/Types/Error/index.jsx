@@ -1,4 +1,4 @@
-import {Cross} from './Cross';
+import {Svg} from '@components'
 
 import styles from './style.module.scss';
 
@@ -6,7 +6,7 @@ const ErrorPopup = ({ children }) => {
 	return (
         <div className={ styles['popup-error'] }>
     	    <div className={ styles['popup-error_circle'] }>
-                <Cross className={styles['popup-error_circle__icon'] }/> 
+                <Svg type='cross' className={styles['popup-error_circle__icon'] }/> 
             </div>
             <h2 className={ styles['popup-error_description'] }>{ children }</h2>
         </div>
