@@ -26,7 +26,7 @@ const MenuItem = ({
 			<Icon
 				className={toClassName(styles['menu-item-icon'], iconClassName)}
 			/>
-			{isFull && <span>{title}</span>}
+			<span>{title}</span>
 		</div>
 	);
 };

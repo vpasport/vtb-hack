@@ -6,6 +6,7 @@ import {
 	InputsBlock,
 	TextEditorBlock,
 	LoaderBlock,
+	ProductCardBlock,
 } from './Blocks';
 
 import styles from './style.module.scss';
@@ -13,6 +14,7 @@ import styles from './style.module.scss';
 const TestPaage = ({}) => {
 	return (
 		<div className={styles.root}>
+			<ProductCardBlock />
 			<IslandBlock />
 			<NotificationsBlock />
 			<ButtonsBlock />

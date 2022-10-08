@@ -28,11 +28,11 @@ const NotificationContextProvider = ({
 				maxNotifications,
 				deleteMS: _deleteMS,
 			}}>
+			{children}
 			<div className={styles.notifications}>
 				{notifications.length !== 0 &&
 					notifications.map((el) => el.component)}
 			</div>
-			{children}
 		</NotificationContext.Provider>
 	);
 };
