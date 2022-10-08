@@ -9,23 +9,21 @@ import styles from './style.module.scss';
 const UsersList = ({ users = [], loading = false }) => {
 	const router = useRouter();
 
-	
-
 	return (
-		<div className={styles.products}>
+		<div className={styles['user-list']}>
 			{loading ? (
-				<div className={styles.products_loader}>
+				<div className={styles['user-list_loader']}>
 					<Loader />
 				</div>
 			) : (
-				// <div>dd</div>
 				!!users &&
 				users.map(({ id, ...card }) => (
 					<UserCard
 						key={id}
-						name={ card.name }
-						email={ card.email }
-						avatar={card.avatar}
+						info={ card.info}
+						onUserClick={() =>
+							router.push(`/users/${id}`)
+						}
 					/>
 				))
 			)}

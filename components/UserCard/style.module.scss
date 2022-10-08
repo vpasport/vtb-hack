@@ -3,7 +3,7 @@
     box-sizing: border-box;
     display: flex;
     width: 400px;
-    height: 128px;
+    height: 150px;
     background-color: #ffffff;
     border-radius: 8px;
     overflow: hidden;
@@ -26,11 +26,18 @@
         }
     }
     &_info {
+        position: relative;
         padding: 20px;
         &>a {
             &:hover {
                 color: $light_blue;
             }
         }
+    }
+    &_button {
+        position: absolute;
+        width: fit-content;
+        bottom: 0;
+        right: -25px;
     }
 }

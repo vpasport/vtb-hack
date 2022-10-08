@@ -5,7 +5,7 @@ import { HYDRATE } from "next-redux-wrapper";
 
 import {
     getUsers as getUsersApi
-} from '@api/users';
+} from '@api/user';
 
 const initUsersState = {
     users: null,
@@ -58,20 +58,16 @@ export const usersSlice = createSlice({
 
 export const { setLoadingUsers, setUsers, setFullInfoInProduct } = usersSlice.actions;
 
-export const selectUsers = (state) => {
-    console.log("state", state)
-    return state.users.users;
-}
+export const selectUsers = (state) => state.users.users;
+
 export const selectLoadingUsers = (state) => state.users.loadingUsers;
-export const selectProductById = (id) => (state) => state.users.find(el => el.id === id);
+
 
 export const getUsers = () => async dispatch => {
-    console.log("getUsers")
     dispatch(usersSlice.actions.setLoadingUsers(true));
 
     getUsersApi()
         .then(({ data }) => {
-            console.log(data)
             dispatch(usersSlice.actions.setUsers(data));
         })
         .catch(err => console.error(err))

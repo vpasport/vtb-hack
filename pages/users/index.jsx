@@ -5,7 +5,7 @@ import {
 	selectLoadingUsers,
 	selectUsers,
 	getUsers,
-} from '@store/slices/usersSlice';
+} from '@store/slices/usersListSlice';
 
 import { UsersList } from '@components';
 
