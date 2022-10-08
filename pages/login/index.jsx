@@ -9,8 +9,7 @@ import {
 	selectLoading,
 } from '@store/slices/userSlice';
 
-import { Button } from '@components';
-import { LoginForm, SignUpForm } from './components';
+import { Button, Forms } from '@components';
 
 import { LoginIcon } from './LoginIcon';
 import styles from './style.module.scss';
@@ -44,14 +43,14 @@ const LoginPage = () => {
 				className={toClassName(styles.icon, signup && styles.icon_mini)}
 			/>
 			{signup ? (
-				<SignUpForm
+				<Forms.SignUpForm
 					onSubmit={(data) => _signup(data)}
 					onCancel={() => setSignup(false)}
 					loading={loading}
 				/>
 			) : (
 				<>
-					<LoginForm
+					<Forms.LoginForm
 						onSubmit={(data) => _login(data)}
 						loading={loading}
 					/>

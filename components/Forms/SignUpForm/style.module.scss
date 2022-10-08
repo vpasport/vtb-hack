@@ -1,4 +1,4 @@
-@import "../../../../styles/variables.scss";
+@import "../../../styles/variables.scss";
 
 .form {
     width: 700px;
@@ -23,13 +23,18 @@
 
     &-input-container {
         width: 100%;
+        &-editor {
+            border: 2px solid $light_blue;
+            border-radius: 4px;
+        }
         &-input {
             width: 100%;
-            border: 2px solid $light_blue;
+            // border: 2px solid $light_blue;
             border-radius: 4px;
 
             &_error {
-                border: 2px solid $red;
+                border-color: $red;
+                // border: 2px solid $red;
             }
         }
     }
