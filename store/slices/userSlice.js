@@ -6,7 +6,7 @@ import { login as userLogin, signup as userSignup } from '@api/user';
 const initUserState = {
     info: null,
     loading: false,
-    test: false
+    test: false,
 };
 
 export const userSlice = createSlice({
@@ -21,7 +21,8 @@ export const userSlice = createSlice({
         },
         setTest: (state, { payload }) => {
             state.test = payload;
-        }
+        },
+
     },
     extraReducers: {
         [HYDRATE]: (state, action) => {
@@ -37,6 +38,8 @@ export const { setLoading, setInfo, setTest } = userSlice.actions;
 
 export const selectInfo = (state) => state.user.info;
 export const selectLoading = (state) => state.user.loading;
+
+export const selectUserById = (id) => (state) => state.users.users.find(el => el.id === id);
 
 export const login = (data) => async dispatch => {
     dispatch(userSlice.actions.setLoading(true));

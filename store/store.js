@@ -12,7 +12,7 @@ const slices = {};
 for (const slice in slicesArray) {
     slices[slicesArray[slice].name] = slicesArray[slice].reducer;
 }
-
+console.log("slices", slices)
 const rootReducer = combineReducers(slices);
 
 const reducer = (state, action) => {
