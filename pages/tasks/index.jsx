@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Tasks } from './Tasks';
+import { Tasks } from '@components';
 
 import {
 	getTasks,
@@ -20,8 +20,6 @@ const TasksPage = () => {
 	useEffect(() => {
 		dispatch(getTasks());
 	}, []);
-
-	console.log(tasks);
 
 	return (
 		<div className={styles.root}>
