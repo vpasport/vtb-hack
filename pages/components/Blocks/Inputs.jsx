@@ -1,18 +1,10 @@
 import { useState } from 'react';
-// import dynamic from 'next/dynamic';
 
 import { BiSearchAlt2 } from 'react-icons/bi';
 import {RiLockPasswordFill} from 'react-icons/ri';
 
 import { Input } from '@components';
 
-// const Input = dynamic(
-// 	() => import('@components/Input').then((mod) => mod.Input),
-// 	{
-// 		ssr: false,
-// 		loading: ({ ...props }) => <p {...props}>Loading...</p>,
-// 	}
-// );
 
 const InputsBlock = () =>
 {
@@ -22,6 +14,7 @@ const InputsBlock = () =>
 	const [defaultInput, setDeafultInput] = useState('');
 	const [checkbox, setCheckbox] = useState(true);
 	const [swicthValue, setSwitchValue] = useState(true);
+	const [date, setDate] = useState(new Date());
 	const [itemsDropdown] = useState([
 		{
 			value: 'dog',
@@ -59,7 +52,9 @@ const InputsBlock = () =>
 				<Input type="switch" text={ 'Switch' } value={swicthValue} onChange={ (e) => setSwitchValue(e.target.checked) }/>
 
 				<Input type="dropdown" dropdownName={ 'Dropdown pets list:' }  items={itemsDropdown} />
-				<Input type="dropdown"  multiple dropdownName={ 'Dropdown & select' }  items={itemsDropdown}  />
+				<Input type="dropdown" multiple dropdownName={ 'Dropdown & select' } items={ itemsDropdown } />
+			
+				<Input type="date" value={ date } onChange={ setDate } />
 			
 		</div>
 	);
