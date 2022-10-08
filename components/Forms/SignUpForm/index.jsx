@@ -1,6 +1,8 @@
 import { useFormik } from 'formik';
+import moment from 'moment';
 
 import { Input, Button, Loader, TextEditor } from '@components';
+import { useNotifications } from '@hooks';
 
 import styles from './style.module.scss';
 import { toClassName } from '@utils';
@@ -10,6 +12,7 @@ const SignUpForm = ({
 	onCancel = () => {},
 	loading = false,
 }) => {
+	const { pushNotifications } = useNotifications();
 	const formik = useFormik({
 		initialValues: {
 			login: '',
@@ -19,6 +22,7 @@ const SignUpForm = ({
 			lastName: '',
 			description: '',
 			email: '',
+			date: new Date(),
 		},
 		validate: (data) => {
 			const error = {};
@@ -39,6 +43,14 @@ const SignUpForm = ({
 				)
 			) {
 				error.email = 'Некорректный email';
+			}
+			if (!data.date || moment(data.date).year() > 2005) {
+				pushNotifications({
+					type: 'error',
+					header: 'Ошибка',
+					description: 'Некорректная дата рождения',
+				});
+				error.date = 'Некорректная дата рождения';
 			}
 			if (!data.password) {
 			}
@@ -118,6 +130,20 @@ const SignUpForm = ({
 				<Input
 					className={toClassName(
 						styles['form-input-container-input'],
+						formik.errors.date &&
+							styles['form-input-container-input_error']
+					)}
+					type='date'
+					placeholder='Birth date'
+					value={formik.values.date}
+					onChange={(e) => formik.setFieldValue('date', e)}
+					description={formik.errors.date}
+				/>
+			</div>
+			<div className={styles['form-input-container']}>
+				<Input
+					className={toClassName(
+						styles['form-input-container-input'],
 						formik.errors.email &&
 							styles['form-input-container-input_error']
 					)}
@@ -133,7 +159,7 @@ const SignUpForm = ({
 			<div className={styles['form-input-container']}>
 				<TextEditor
 					placeholder='О себе'
-					className={styles['form-input-container-input']}
+					className={styles['form-input-container-editor']}
 					onChange={(val) => formik.setFieldValue('description', val)}
 				/>
 			</div>
