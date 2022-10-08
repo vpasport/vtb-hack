@@ -11,8 +11,10 @@
     border-radius: 8px;
     outline: none;
     padding: 20px;
+    z-index: 11;
     transition: all 1s linear;
     &_overlay {
+        z-index: 10;
         position: fixed;
         top: 0;
         left: 0;

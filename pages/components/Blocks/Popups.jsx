@@ -6,6 +6,7 @@ import styles from '../style.module.scss'
 
 const PopupBlock = () => {
 	const [progress, setProgress] = useState(0);
+
 	return (
 		<div
 				style={{
@@ -15,7 +16,7 @@ const PopupBlock = () => {
 					gap: 10,
             } }>
             
-                <h3>Попапы:</h3>
+			<h3>Попапы:</h3>
 				<Popup
 					type='success'
 					button='border'
