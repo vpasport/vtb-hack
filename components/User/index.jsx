@@ -9,6 +9,7 @@ const User = ({
 	image = '',
 	onClick = () => {},
 	className = '',
+	withName = true,
 	...props
 }) => {
 	return (
@@ -19,7 +20,7 @@ const User = ({
 			<div className={styles['user-avatar']}>
 				<CustomImage src={image} alt={name} />
 			</div>
-			<span className={styles['user-name']}>{name}</span>
+			{withName && <span className={styles['user-name']}>{name}</span>}
 		</div>
 	);
 };
