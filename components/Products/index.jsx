@@ -22,7 +22,7 @@ const Products = ({ cards = [], loading = false }) => {
 						key={id}
 						className={styles.products_card}
 						imageURL={card.imageURL}
-						tittle={card.tittle}
+						tittle={card.title}
 						description={card.description}
 						userAvatar={card.user.userAvatar}
 						userName={card.user.userName}

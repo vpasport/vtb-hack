@@ -17,11 +17,10 @@ const Menu = () => {
 
 	useEffect(() => {
 		routes.forEach((el, idx) => {
-			if (el.path === router.pathname) setSelected(idx);
+			if (new RegExp(`^${el.path}`, 'g').test(router.pathname))
+				setSelected(idx);
 		});
 	}, [router]);
-
-	console.log(selected);
 
 	return (
 		<div
