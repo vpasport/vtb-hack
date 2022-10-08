@@ -29,8 +29,12 @@ import {
 import './style.module.scss';
 import { toClassName } from '@utils/toClassName';
 
-function Placeholder() {
-	return <div className='editor-placeholder'>Enter some rich text...</div>;
+function Placeholder({ text = '' }) {
+	return (
+		<div className='editor-placeholder'>
+			{text ? text : 'Enter some rich text...'}
+		</div>
+	);
 }
 
 const editorConfig = {
@@ -88,6 +92,7 @@ const TextEditor = ({
 	initValue = '',
 	onChange = () => {},
 	className = '',
+	placeholder = '',
 }) => {
 	return (
 		<LexicalComposer initialConfig={editorConfig}>
@@ -98,7 +103,7 @@ const TextEditor = ({
 						contentEditable={
 							<ContentEditable className='editor-input' />
 						}
-						placeholder={<Placeholder />}
+						placeholder={<Placeholder text={placeholder} />}
 					/>
 					<HistoryPlugin />
 					{/* <TreeViewPlugin /> */}

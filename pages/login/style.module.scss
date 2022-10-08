@@ -7,10 +7,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    &_signup {
+        margin: 200px 0;
+    }
 
     & .icon {
+        transition: all 0.3s;
         width: 400px;
         height: 400px;
+
+        &_mini {
+            width: 250px;
+            height: 250px;
+        }
     }
 
     & .link {
