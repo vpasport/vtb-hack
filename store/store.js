@@ -2,7 +2,7 @@ import {
     configureStore,
     combineReducers,
 } from '@reduxjs/toolkit';
-import { createWrapper } from 'next-redux-wrapper';
+import { createWrapper, HYDRATE } from 'next-redux-wrapper';
 
 import * as slicesArray from './slices';
 
@@ -14,12 +14,41 @@ for (const slice in slicesArray) {
 
 const rootReducer = combineReducers(slices);
 
-export const store =
-    configureStore({
-        reducer: rootReducer,
-        devTools: process.env.NODE_ENV !== 'production'
+const reducer = (state, action) => {
+    if (action.type === HYDRATE) {
+        let nextState = {
+            ...state,
+            ...action.payload,
+        };
+        return nextState;
+    } else {
+        return rootReducer(state, action);
+    }
+};
+
+
+// export const store =
+//     configureStore({
+//         reducer: rootReducer,
+//         devTools: process.env.NODE_ENV !== 'production'
+//     });
+
+// const makeStore = () => store;
+
+const isDev = process.env.NODE_ENV !== 'production';
+
+const makeStore = (context) => {
+    let middleware = [];
+
+    const store = configureStore({
+        reducer,
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware().concat(middleware),
+        devTools: isDev,
+        preloadedState: undefined,
     });
 
-const makeStore = () => store;
+    return store;
+};
 
-export const wrapper = createWrapper(makeStore);
+export const wrapper = createWrapper(makeStore, { debug: isDev });
