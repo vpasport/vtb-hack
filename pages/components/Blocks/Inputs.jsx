@@ -22,6 +22,8 @@ const InputsBlock = () =>
 	const [defaultInput, setDeafultInput] = useState('');
 	const [checkbox, setCheckbox] = useState(true);
 	const [swicthValue, setSwitchValue] = useState(true);
+	const [date, setDate] = useState(new Date());
+
 	const [itemsDropdown] = useState([
 		{
 			value: 'dog',
@@ -59,7 +61,9 @@ const InputsBlock = () =>
 				<Input type="switch" text={ 'Switch' } value={swicthValue} onChange={ (e) => setSwitchValue(e.target.checked) }/>
 
 				<Input type="dropdown" dropdownName={ 'Dropdown pets list:' }  items={itemsDropdown} />
-				<Input type="dropdown"  multiple dropdownName={ 'Dropdown & select' }  items={itemsDropdown}  />
+				<Input type="dropdown" multiple dropdownName={ 'Dropdown & select' } items={ itemsDropdown } />
+			
+				<Input type="date" value={ date } onChange={(e) => setDate(e)} />
 			
 		</div>
 	);
