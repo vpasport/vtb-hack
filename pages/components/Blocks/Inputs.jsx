@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { BiSearchAlt2 } from 'react-icons/bi';
+import { AiFillCloseCircle } from 'react-icons/ai';
 import {RiLockPasswordFill} from 'react-icons/ri';
 
 import { Input } from '@components';
@@ -57,7 +58,9 @@ const InputsBlock = () =>
 			
 				<Input type="date" value={ date } onChange={ (e) => setDate(e) } />
 				
-				<Input type="file" value={ files } onChange={ (e) => setFiles(e) } />
+			
+				{/* иконка нужна - в import */}
+				<Input type="file" leftIcon={ AiFillCloseCircle } value={ files } onChange={ (e) => setFiles(e) } />
 			
 		</div>
 	);

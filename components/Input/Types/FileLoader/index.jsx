@@ -1,11 +1,13 @@
-import { useRef, useState} from 'react';
-import Image from 'next/image';
+import { useRef, useState } from 'react';
 
 import DataTransfer from './DataTransfer';
 
 import styles from './style.module.scss';
 
-const FileLoader = ({onChange}) =>
+const FileLoader = ({
+    onChange, 
+    leftIcon: LeftIcon = null
+}) =>
 {
     const fileInput = useRef();
     const preview = useRef();
@@ -13,7 +15,7 @@ const FileLoader = ({onChange}) =>
     const [isFileLoaded, setIsFileLoaded] = useState(false);
     const [result, setResult] = useState('');
     const [fileName, setFileName] = useState('');
-
+    
     const dataTransfer = new DataTransfer();
  
     const addFile = (input) =>{
@@ -21,7 +23,7 @@ const FileLoader = ({onChange}) =>
 
         if (file){
             dataTransfer.items.add(file);
-
+            
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onloadend = () =>
@@ -32,35 +34,38 @@ const FileLoader = ({onChange}) =>
             }
             
         }
-        onChange([...dataTransfer.files]);
     }
 
     const removeFilesItem = (target) => {
         console.log(target)
-	// let name = $(target).prev().text();
-	// let input = $(target).closest('.input-file-row').find('input[type=file]');	
-	// $(target).closest('.input-file-list-item').remove();	
-	// for(let i = 0; i < dt.items.length; i++){
-	// 	if(name === dt.items[i].getAsFile().name){
-	// 		dt.items.remove(i);
-	// 	}
-	// }
-	// input[0].files = dt.files;  
+
+        setResult('');
+        setFileName('0');
+        setIsFileLoaded(!isFileLoaded);
+
+        [...dataTransfer.items].forEach((file) =>
+        {
+            dataTransfer.remove(file);
+        });
+        onChange([...dataTransfer.files]);
 }
 
 
 // });
     return (
-        <div className={ styles['input-file-row']}>
+        <div className={ styles['input-file-row'] }>
+            
             <div ref={ preview } className={ styles['input-file-list'] }>
                 { isFileLoaded &&
                     <div className={ styles['input-file-list-item'] }>
-                        <Image
+                        <img
                             className={ styles['input-file-list-img'] }
-                            src={ result } alt='Loaded file'
+                            src={ result }
+                            alt='Loaded file'
                         /> 
-                        <span className={ styles['input-file-list-name'] }>{fileName}</span> 
-                        <a href="#" onClick={ (e) => removeFilesItem(e) } className={ styles['input-file-list-remove'] }>x</a> 
+                        <span className={ styles['input-file-list-name'] }>{ fileName }</span> 
+                        {!!LeftIcon && <LeftIcon onClick={ (e) => removeFilesItem(e) } className={styles['input-file-list-remove']} />}
+                        
                     </div>
                 }
             </div>  

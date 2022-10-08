@@ -25,5 +25,9 @@
     }
     &:hover {
         cursor: pointer;
+        box-shadow: $box-shadow-input;
+    }
+    &:active {
+        box-shadow: $box-shadow-input-hover;
     }
 }

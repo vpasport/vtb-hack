@@ -6,8 +6,10 @@ class DataTransfer {
 
     add(file) {
         this.items.add(file);
+    }
 
-        return this.files;
+    remove(file) {
+        this.items.remove(file);
     }
 }
 

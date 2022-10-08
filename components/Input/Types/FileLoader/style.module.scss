@@ -31,6 +31,13 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
+    &:hover {
+        cursor: pointer;
+        box-shadow: $box-shadow-input;
+    }
+    &:active {
+        box-shadow: $box-shadow-input-hover;
+    }
 }
 
 .input-file input[type=file] {
@@ -44,9 +51,14 @@
 
 .input-file-list {
     padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
 }
 
 .input-file-list-item {
+    cursor: pointer;
     display: inline-block;
     margin: 0 15px 15px;
     width: 150px;
@@ -59,6 +71,7 @@
 }
 
 .input-file-list-name {
+    cursor: pointer;
     text-align: center;
     display: block;
     font-size: 12px;
@@ -67,7 +80,8 @@
 }
 
 .input-file-list-remove {
-    color: #fff;
+    cursor: pointer;
+    color: $blue;
     text-decoration: none;
     display: inline-block;
     position: absolute;
@@ -75,7 +89,7 @@
     margin: 0;
     top: 5px;
     right: 5px;
-    background: #ff0202;
+    background-color: $white;
     width: 16px;
     height: 16px;
     text-align: center;
