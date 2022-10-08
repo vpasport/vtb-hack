@@ -1,11 +1,10 @@
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
-import { Button, Loader } from '@components';
+import { Button, Loader, Svg } from '@components';
 
 import { FiChevronRight } from 'react-icons/fi';
 import { RiCopperCoinFill } from 'react-icons/ri';
-import { EmptyIcon } from './EmptyIcon';
 import styles from './style.module.scss';
 import { toClassName } from '@utils';
 
@@ -34,7 +33,7 @@ const ProductCard = ({
 		<div className={toClassName(styles.card, className)}>
 			<div className={styles['card-image']}>
 				{!imageURL || error ? (
-					<EmptyIcon className={styles['card-image_empty']} />
+					<Svg type='empty' className={styles['card-image_empty']} />
 				) : (
 					<CustomImage
 						src={imageURL}

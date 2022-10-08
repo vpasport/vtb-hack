@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 
+import { Svg } from '@components';
+
 import DataTransfer from './DataTransfer';
 
 import styles from './style.module.scss';
@@ -30,7 +32,7 @@ const FileLoader = ({
             {
                 setResult(reader.result);
                 setFileName(file.name);
-                setIsFileLoaded(!isFileLoaded);
+                setIsFileLoaded(true);
             }
             
         }
@@ -41,7 +43,7 @@ const FileLoader = ({
 
         setResult('');
         setFileName('0');
-        setIsFileLoaded(!isFileLoaded);
+        setIsFileLoaded(false);
 
         [...dataTransfer.items].forEach((file) =>
         {
@@ -53,23 +55,24 @@ const FileLoader = ({
 
 // });
     return (
-        <div className={ styles['input-file-row'] }>
+        <div className={ styles.file }>
             
-            <div ref={ preview } className={ styles['input-file-list'] }>
-                { isFileLoaded &&
-                    <div className={ styles['input-file-list-item'] }>
+            <div ref={ preview } className={ styles.file_preview }>
+                {!isFileLoaded  && <Svg type='empty'/> }
+                { !!isFileLoaded &&
+                    <div className={ styles.file_preview__content }>
                         <img
-                            className={ styles['input-file-list-img'] }
+                            className={ styles['file_preview__content--img'] }
                             src={ result }
                             alt='Loaded file'
                         /> 
-                        <span className={ styles['input-file-list-name'] }>{ fileName }</span> 
-                        {!!LeftIcon && <LeftIcon onClick={ (e) => removeFilesItem(e) } className={styles['input-file-list-remove']} />}
+                        <span className={ styles['file_preview__content--label'] }>{ fileName }</span> 
+                        {!!LeftIcon && <LeftIcon onClick={ (e) => removeFilesItem(e) } className={  styles['file_preview__content--icon']    } />}
                         
                     </div>
                 }
             </div>  
-                <label onChange={() => addFile(fileInput)} className={ styles['input-file']}>
+                <label onChange={() => addFile(fileInput)} className={ styles.file_input}>
                     <input ref={fileInput} type="file" name="file[]" multiple accept="image/*"/>		
                     <span>Выберите файл</span>
                 </label>

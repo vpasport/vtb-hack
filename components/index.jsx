@@ -14,3 +14,4 @@ export { Tasks } from './Tasks';
 export { TextViewer, TextEditor } from './TextEditor';
 export * as Forms from './Forms';
 export { User } from './User';
+export { Svg } from './Svg';
