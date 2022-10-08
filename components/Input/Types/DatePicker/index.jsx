@@ -14,7 +14,7 @@ const DatePicker = ({value, onChange}) =>
             if (picker) return setIsOpenPiscker(!isOpenPiscker)
         } } className={ styles.wrapper }>
          
-            <input ref={picker}  className={ styles.wrapper_input } type="text" value={ new Date(value).toLocaleString().split(',')[0] } placeholder='Выберите' />
+            <input ref={picker}  className={ styles.wrapper_input } type="text" value={ new Date(value).toLocaleString().split(',')[0] } readOnly />
             {isOpenPiscker && <div className={styles.wrapper_picker}>
                 <DayPicker 
                     mode="single"
@@ -28,4 +28,4 @@ const DatePicker = ({value, onChange}) =>
     );
 }
 
-export {DatePicker}
+export { DatePicker };
