@@ -1,8 +1,7 @@
 // import styles from './style.module.scss';
 
-const CustomPopup = ({ children, ...props}) =>
+const CustomPopup = ({ children}) =>
 {
-    console.log(props)
     return (
         <div>
             {children}

@@ -9,3 +9,4 @@ export { Input } from './Input';
 export { TextViewer, TextEditor } from './TextEditor';
 export { ProductCard } from './ProductCard';
 export { Tasks } from './Tasks';
+export { Products } from './Products';
