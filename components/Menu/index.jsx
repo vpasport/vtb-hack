@@ -16,12 +16,12 @@ const Menu = () => {
 	const [selected, setSelected] = useState(null);
 
 	useEffect(() => {
-		routes.forEach((el, idx) =>
-			new RegExp(`^${el.path}`, 'g').test(router.pathname)
-				? setSelected(idx)
-				: setSelected(null)
-		);
+		routes.forEach((el, idx) => {
+			if (el.path === router.pathname) setSelected(idx);
+		});
 	}, [router]);
+
+	console.log(selected);
 
 	return (
 		<div

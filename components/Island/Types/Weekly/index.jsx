@@ -9,9 +9,9 @@ import styles from './style.module.scss';
 const WeeklyIsland = ({
 	className = '',
 	badge = '',
-	header = 'Header',
-	description = 'Description',
-	buttonText = 'Button',
+	header = '',
+	description = '',
+	buttonText = '',
 	price = null,
 	progress = null,
 	onButtonClick = () => {},
