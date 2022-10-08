@@ -1,10 +1,10 @@
-import { useRouter } from 'next/router';
 import NextNProgress from 'nextjs-progressbar';
 import { Provider } from 'react-redux';
 
 import { wrapper } from '@store';
 import { NotificationContextProvider } from '@contexts';
 import { Menu } from '@components';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import '@styles/globals.css';
 import '@styles/globals.scss';
@@ -14,16 +14,18 @@ function MyApp({ Component, ...rest }) {
 
   return (
     <Provider store={store}>
-      <NotificationContextProvider>
-        <NextNProgress />
-        <div className='root' data-test='test'>
-          <Menu />
-          <div className='content'>
-            <Component {...props.pageProps} />
+      <PersistGate persistor={store.__persistor} loading={<div>loading</div>}>
+        <NotificationContextProvider>
+          <NextNProgress />
+          <div className='root' data-test='test'>
+            <Menu />
+            <div className='content'>
+              <Component {...props.pageProps} />
+            </div>
           </div>
-        </div>
-      </NotificationContextProvider>
-    </Provider>
+        </NotificationContextProvider>
+      </PersistGate>
+    </Provider >
   );
 }
 
