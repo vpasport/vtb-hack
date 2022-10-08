@@ -1,5 +1,4 @@
-import { Confirm } from './Confirm';
-import { Button } from '@components';
+import { Button, Svg } from '@components';
 
 import styles from './style.module.scss';
 
@@ -7,7 +6,7 @@ const ConfirmPopup = ({ children, toggle, buttonPopupConfirm, buttonPopupDelete}
 	return (
 		<div className={ styles['popup-confirm'] }>
             <div className={ styles['popup-confirm_circle'] }>
-                <Confirm className={styles['popup-confirm_circle__icon'] }/> 
+                <Svg type='confirm' className={styles['popup-confirm_circle__icon'] }/> 
             </div>
 			<h2 className={ styles['popup-confirm_description'] }>{ children }</h2>
 			<div className={ styles['popup-confirm_btns'] }>
