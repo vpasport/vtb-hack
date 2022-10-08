@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Svg } from '@components';
 
@@ -7,78 +7,86 @@ import DataTransfer from './DataTransfer';
 import styles from './style.module.scss';
 
 const FileLoader = ({
-    onChange, 
-    leftIcon: LeftIcon = null
-}) =>
-{
-    const fileInput = useRef();
-    const preview = useRef();
+	onChange = () => {},
+	leftIcon: LeftIcon = null,
+	initValue = '',
+}) => {
+	const fileInput = useRef();
+	const preview = useRef();
 
-    const [isFileLoaded, setIsFileLoaded] = useState(false);
-    const [result, setResult] = useState('');
-    const [fileName, setFileName] = useState('');
-    
-    const dataTransfer = new DataTransfer();
- 
-    const addFile = (input) =>{
-        const file = input.current.files[0];
+	const [result, setResult] = useState({
+		url: initValue,
+		name: '',
+		file: null,
+	});
 
-        if (file){
-            dataTransfer.items.add(file);
-            
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onloadend = () =>
-            {
-                setResult(reader.result);
-                setFileName(file.name);
-                setIsFileLoaded(true);
-            }
-            
-        }
-    }
+	const addFile = (input) => {
+		const file = input.current.files[0];
 
-    const removeFilesItem = (target) => {
-        console.log(target)
+		if (file) {
+			const url = URL.createObjectURL(file);
 
-        setResult('');
-        setFileName('0');
-        setIsFileLoaded(false);
+			setResult({
+				name: file.name,
+				url,
+				file: file,
+			});
+		}
+	};
 
-        [...dataTransfer.items].forEach((file) =>
-        {
-            dataTransfer.remove(file);
-        });
-        onChange([...dataTransfer.files]);
-}
+	useEffect(() => {
+		onChange(result);
+	}, [result]);
 
+	const removeFilesItem = (target) => {
+		setResult({
+			name: '',
+			url: '',
+			file: null,
+		});
+	};
 
-// });
-    return (
-        <div className={ styles.file }>
-            
-            <div ref={ preview } className={ styles.file_preview }>
-                {!isFileLoaded  && <Svg type='empty'/> }
-                { !!isFileLoaded &&
-                    <div className={ styles.file_preview__content }>
-                        <img
-                            className={ styles['file_preview__content--img'] }
-                            src={ result }
-                            alt='Loaded file'
-                        /> 
-                        <span className={ styles['file_preview__content--label'] }>{ fileName }</span> 
-                        {!!LeftIcon && <LeftIcon onClick={ (e) => removeFilesItem(e) } className={  styles['file_preview__content--icon']    } />}
-                        
-                    </div>
-                }
-            </div>  
-                <label onChange={() => addFile(fileInput)} className={ styles.file_input}>
-                    <input ref={fileInput} type="file" name="file[]" multiple accept="image/*"/>		
-                    <span>Выберите файл</span>
-                </label>
-	    </div>
+	return (
+		<div className={styles.file}>
+			<div ref={preview} className={styles.file_preview}>
+				{!!result.file || result.url === initValue ? (
+					<div className={styles.file_preview__content}>
+						<img
+							className={styles['file_preview__content--img']}
+							src={result.url}
+							alt='Loaded file'
+						/>
+						{/* <span
+							className={styles['file_preview__content--label']}>
+							{fileName}
+						</span> */}
+						{!!LeftIcon && (
+							<LeftIcon
+								onClick={(e) => removeFilesItem(e)}
+								className={
+									styles['file_preview__content--icon']
+								}
+							/>
+						)}
+					</div>
+				) : (
+					<Svg type='empty' />
+				)}
+			</div>
+			<label
+				onChange={() => addFile(fileInput)}
+				className={styles.file_input}>
+				<input
+					ref={fileInput}
+					type='file'
+					name='file[]'
+					multiple
+					accept='image/*'
+				/>
+				<span>Выберите файл</span>
+			</label>
+		</div>
+	);
+};
 
-    );
-}
-
-export {FileLoader}
+export { FileLoader };

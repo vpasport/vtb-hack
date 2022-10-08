@@ -43,6 +43,16 @@ export const productsSlice = createSlice({
         },
         deleteProduct: (state, { payload }) => {
             state.products = state.products.filter(el => el.id !== payload);
+        },
+        editProduct: (state, { payload: { id, ...payload } }) => {
+            const idx = state.products.findIndex(el => el.id === id);
+            if (idx !== -1) {
+                const tmp = { ...payload, image: undefined };
+                state.products[idx] = {
+                    ...state.products[idx],
+                    ...tmp
+                };
+            };
         }
     },
     extraReducers: {
@@ -75,20 +85,36 @@ export const getProducts = () => async dispatch => {
 export const addReviewToProduct =
     ({ id = '', text = '', user = {}, callback = () => { } }) =>
         async dispatch => {
-            dispatch(productsSlice.actions.addReview({ id, text, user }));
-
-            return new Promise(res => setTimeout(res(), 1000))
+            return new Promise(res => {
+                dispatch(productsSlice.actions.addReview({ id, text, user }));
+                setTimeout(() => res(), 1000);
+            })
                 .then(() => callback('success'))
                 .catch(() => callback('error'));
         };
 
 export const deleteProduct = ({ id = '', callback = () => { } }) =>
     async dispatch => {
-        dispatch(productsSlice.actions.deleteProduct(id));
-
-        return new Promise(res => setTimeout(res(), 1000))
+        return new Promise(res => {
+            dispatch(productsSlice.actions.deleteProduct(id));
+            setTimeout(() => res(), 1000);
+        })
             .then(() => callback('success'))
             .catch(() => callback('error'));
+    };
+
+export const editProduct = ({ callback = () => { }, ...editedProduct }) =>
+    async dispatch => {
+        console.log(2);
+        return new Promise(res => {
+            dispatch(productsSlice.actions.editProduct(editedProduct));
+            setTimeout(() => res(), 1000);
+        })
+            .then(() => callback('success'))
+            .catch((error) => {
+                console.error(error);
+                callback('error');
+            });
     };
 
 export default productsSlice.reducer;
