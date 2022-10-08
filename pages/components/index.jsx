@@ -7,7 +7,7 @@ import {
 	TextEditorBlock,
 	LoaderBlock,
 	ProductCardBlock,
-} from './Blocks';
+} from '../../components/Blocks';
 
 import styles from './style.module.scss';
 

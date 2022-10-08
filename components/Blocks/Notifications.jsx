@@ -1,7 +1,7 @@
 import { Button } from '@components';
 import { useNotifications } from '@hooks';
 
-import styles from '../style.module.scss';
+import styles from './style.module.scss';
 
 const NotificationsBlock = () => {
 	const { pushNotifications } = useNotifications();
