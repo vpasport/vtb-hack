@@ -54,7 +54,7 @@ const InputsBlock = () =>
 				<Input type="dropdown" dropdownName={ 'Dropdown pets list:' }  items={itemsDropdown} />
 				<Input type="dropdown" multiple dropdownName={ 'Dropdown & select' } items={ itemsDropdown } />
 			
-				<Input type="date" value={ date } onChange={(e) => setDate(e)} />
+				<Input type="date" value={ date } onChange={ setDate } />
 			
 		</div>
 	);
