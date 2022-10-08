@@ -1,6 +1,7 @@
 .wrapper {
     position: relative;
     &_input {
+        cursor: pointer;
         box-sizing: border-box;
         font-family: inherit;
         font-size: inherit;
