@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Island, Popup } from '@components';
 
 import PropTypes from 'prop-types';
