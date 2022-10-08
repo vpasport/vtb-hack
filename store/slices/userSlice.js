@@ -1,33 +1,46 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from "next-redux-wrapper";
 
+import { login as userLogin } from '@api/user';
+
 const initUserState = {
-    info: {},
-    auth: false,
+    info: null,
+    loading: false
 };
 
 export const userSlice = createSlice({
     name: 'user',
     initialState: initUserState,
     reducers: {
-        setAuthState: (state, action) => {
-            state.auth = action.payload;
+        setInfo: (state, { payload }) => {
+            state.info = payload;
         },
-        setInfoState: (state, action) => {
-            state.user = action.payload;
-        },
+        setLoading: (state, { payload }) => {
+            state.loading = payload;
+        }
     },
     extraReducers: {
         [HYDRATE]: (state, action) => ({
             ...state,
-            ...action.payload.auth,
+            ...action.payload.user,
         }),
     },
 });
 
-export const { setAuthState, setInfoState } = userSlice.actions;
+export const { setLoading, setInfo } = userSlice.actions;
 
-export const selectAuthState = (state) => state.user.auth;
-export const selectInfoState = (state) => state.user.info;
+export const selectInfo = (state) => state.user.info;
+export const selectLoading = (state) => state.user.loading;
+
+export const login = (login, password) => async dispatch => {
+    dispatch(userSlice.actions.setLoading(true));
+    userLogin({ login, password })
+        .then(res => {
+            console.log(res);
+            dispatch(userSlice.actions.setInfo(res.data));
+        })
+        .catch(err => console.error(err))
+        .finally(() => dispatch(userSlice.actions.setLoading(false)));
+};
 
 export default userSlice.reducer;

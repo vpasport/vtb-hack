@@ -14,6 +14,10 @@
     overflow: hidden;
     transition: width 0.3s ease-in-out;
 
+    &_hidden {
+        display: none;
+    }
+
     &-header {
         color: #ffffff;
         width: 100%;
