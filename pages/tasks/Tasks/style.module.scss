@@ -1,8 +1,11 @@
-@import '../../styles/variables.scss';
+@import "../../../styles/variables.scss";
 .tasks {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    &_loader {
+        height: 220px;
+    }
     &_headline {
         margin: 0;
     }

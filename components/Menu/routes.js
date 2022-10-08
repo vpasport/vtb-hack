@@ -1,4 +1,4 @@
-import { FiAward, FiClipboard } from 'react-icons/fi';
+import { FiAward, FiClipboard, FiShoppingCart } from 'react-icons/fi';
 
 export const routes = [
     {
@@ -10,6 +10,11 @@ export const routes = [
         name: 'Награды',
         path: '/awards',
         icon: FiAward
+    },
+    {
+        name: 'Продукты',
+        path: '/products',
+        icon: FiShoppingCart
     }
 ];
 

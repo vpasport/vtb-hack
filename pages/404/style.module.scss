@@ -15,5 +15,8 @@
 
     & .link {
         color: $light_blue;
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
