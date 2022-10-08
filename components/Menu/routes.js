@@ -12,3 +12,5 @@ export const routes = [
         icon: FiAward
     }
 ];
+
+export const notShowing = ['/404', '/login'];

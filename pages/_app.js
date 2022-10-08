@@ -10,7 +10,6 @@ import '@styles/globals.css';
 import '@styles/globals.scss';
 
 function MyApp({ Component, ...rest }) {
-  const { pathname } = useRouter();
   const { store, props } = wrapper.useWrappedStore(rest);
 
   return (
@@ -18,7 +17,7 @@ function MyApp({ Component, ...rest }) {
       <NotificationContextProvider>
         <NextNProgress />
         <div className='root' data-test='test'>
-          {pathname !== '/404' && <Menu />}
+          <Menu />
           <div className='content'>
             <Component {...props.pageProps} />
           </div>
