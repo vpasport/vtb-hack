@@ -9,4 +9,13 @@ const login = (data) => {
     return api.post('/login', data);
 };
 
-export { login };
+const signup = (data) => {
+    return new Promise((res) =>
+        setTimeout(() =>
+            res({ data: { login: 'test', name: 'test', id: 1 } }),
+            1000
+        ));
+    return api.post('/signup', data);
+};
+
+export { login, signup };
