@@ -7,6 +7,7 @@ import {
 	selectProductById,
 	setFullInfoInProduct,
 	addReviewToProduct,
+	deleteProduct as deleteProductStore,
 } from '@store/slices/productsSlice';
 import { selectInfo } from '@store/slices/userSlice';
 
@@ -18,6 +19,7 @@ import {
 	Button,
 	TextViewer,
 	Review,
+	ToolBar,
 } from '@components';
 import { useNotifications } from '@hooks';
 
@@ -40,10 +42,7 @@ const Product = ({ productInfo = {} }) => {
 		dispatch(setFullInfoInProduct(productInfo));
 	}, [productInfo]);
 
-	console.log(reviewValue);
-
 	const createReview = useCallback(() => {
-		console.log(user);
 		dispatch(
 			addReviewToProduct({
 				id: fullInfo.id,
@@ -70,12 +69,39 @@ const Product = ({ productInfo = {} }) => {
 		);
 	}, [user, fullInfo, reviewValue]);
 
-	console.log(user);
+	const deleteProduct = useCallback(() => {
+		dispatch(
+			deleteProductStore({
+				id: fullInfo.id,
+				callback: (type) => {
+					if (type === 'success') {
+						pushNotifications({
+							type: 'success',
+							header: 'Успешно',
+							description: 'Отзыв удален',
+						});
+						router.back();
+					} else {
+						pushNotifications({
+							type: 'error',
+							header: 'Ошибка',
+							description: 'Не удалось удалить отзыв',
+						});
+					}
+				},
+			})
+		);
+	}, []);
 
 	return (
 		<div className={styles.root}>
 			{fullInfo ? (
 				<>
+					<ToolBar
+						onEdit={() => router.push(router.asPath + '/edit')}
+						onCreate={() => router.push('/protucts/edit')}
+						onDelete={() => deleteProduct()}
+					/>
 					<div className={styles['image-container']}>
 						<CustomImage
 							src={fullInfo.imageURL}

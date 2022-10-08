@@ -40,6 +40,9 @@ export const productsSlice = createSlice({
                 else
                     state.products[idx].reviews = [obj];
             };
+        },
+        deleteProduct: (state, { payload }) => {
+            state.products = state.products.filter(el => el.id !== payload);
         }
     },
     extraReducers: {
@@ -72,7 +75,6 @@ export const getProducts = () => async dispatch => {
 export const addReviewToProduct =
     ({ id = '', text = '', user = {}, callback = () => { } }) =>
         async dispatch => {
-            console.log(1, user);
             dispatch(productsSlice.actions.addReview({ id, text, user }));
 
             return new Promise(res => setTimeout(res(), 1000))
@@ -80,5 +82,13 @@ export const addReviewToProduct =
                 .catch(() => callback('error'));
         };
 
+export const deleteProduct = ({ id = '', callback = () => { } }) =>
+    async dispatch => {
+        dispatch(productsSlice.actions.deleteProduct(id));
+
+        return new Promise(res => setTimeout(res(), 1000))
+            .then(() => callback('success'))
+            .catch(() => callback('error'));
+    };
 
 export default productsSlice.reducer;
