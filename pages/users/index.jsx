@@ -1,32 +1,32 @@
-// import { useSelector, useDispatch } from 'react-redux';
-// import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
-// import {
-// 	selectLoadingProducts,
-// 	selectProducts,
-// 	getProducts,
-// } from '@store/slices/productsSlice';
+import {
+	selectLoadingUsers,
+	selectUsers,
+	getUsers,
+} from '@store/slices/usersSlice';
 
-import { UserCard } from '@components';
+import { UsersList } from '@components';
 
 import styles from './style.module.scss';
 
 const UsersPage = ({}) => {
-	// const products = useSelector(selectProducts);
-	// const productsLoading = useSelector(selectLoadingProducts);
+	const users = useSelector(selectUsers);
+	const loadingUsers = useSelector(selectLoadingUsers);
+	
+	const dispatch = useDispatch();
 
-	// const dispstch = useDispatch();
-
-	// useEffect(() => {
-	// 	dispstch(getProducts());
-	// }, []);
+	useEffect(() => {
+		dispatch(getUsers());
+	}, []);
 
 
 
 	return (
 		<div className={styles.root}>
 			<h2 className={styles.root_headline}>Пользователи</h2>
-			<UserCard avatar={''} name={'anyalozovaya'} />
+			<UsersList users={ users } loading={loadingUsers} />
 		</div>
 	);
 };
