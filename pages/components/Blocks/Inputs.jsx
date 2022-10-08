@@ -1,18 +1,10 @@
 import { useState } from 'react';
-// import dynamic from 'next/dynamic';
 
 import { BiSearchAlt2 } from 'react-icons/bi';
 import {RiLockPasswordFill} from 'react-icons/ri';
 
 import { Input } from '@components';
 
-// const Input = dynamic(
-// 	() => import('@components/Input').then((mod) => mod.Input),
-// 	{
-// 		ssr: false,
-// 		loading: ({ ...props }) => <p {...props}>Loading...</p>,
-// 	}
-// );
 
 const InputsBlock = () =>
 {
@@ -23,7 +15,6 @@ const InputsBlock = () =>
 	const [checkbox, setCheckbox] = useState(true);
 	const [swicthValue, setSwitchValue] = useState(true);
 	const [date, setDate] = useState(new Date());
-
 	const [itemsDropdown] = useState([
 		{
 			value: 'dog',

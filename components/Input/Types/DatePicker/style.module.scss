@@ -1,12 +1,12 @@
 .input {
-    font-family: inherit;
-    display: block;
     box-sizing: border-box;
-    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    background: white;
     border-radius: 4px;
-    border: 1px solid white;
-    color: black;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    font-size: 14px;
+    height: 44px;
+    outline: none;
+    border: 2px solid rgb(23, 112, 255);
+    padding: 10px 16px;
+    width: 100%;
 }

@@ -8,10 +8,11 @@ const DatePicker = ({value, onChange}) =>
     
     return (
         <ReactDatePicker
+                dateFormat='dd.MM.yyyy'
                 className={styles.input}
                 placeholderText="Select date"
-                onChange={onChange}
                 selected={value}
+                onChange={onChange}
         />
     )
 }
