@@ -12,14 +12,9 @@
         gap: 20px;
         flex-wrap: wrap;
     }
-    &_wrapper {
-        display: flex;
-    }
     &_description {
-        box-sizing: border-box;
-        border: 2px solid $light_blue;
+        z-index: 100000;
         border-radius: 8px;
-        width: 30%;
         padding: 20px;
     }
 }

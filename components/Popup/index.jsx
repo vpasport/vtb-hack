@@ -10,19 +10,24 @@ import styles from './style.module.scss'
 
 const Popup = (props) =>
 {
-    const [isOpen, setIsOpen] = useState(false);
+    let value = props?.isOpenNow ? props.isOpenNow : false;
+    
+    const [isOpen, setIsOpen] = useState(value);
   
+
+    // delete props.isOpen;
     const propsContentPopup = {
         ...props,
         toggle: () => setIsOpen(!isOpen)
     }
+
 
     const stylesPopup = props.type === 'confirm' ? styles.popup + ' ' + styles.confirm
         : (props.type === 'custom' ? styles.popup + ' ' + styles.custom : styles.popup);
     
     return (
         <>
-            <Button type={ props.button } className={ props.classNameButton } onClick={ () => setIsOpen(!isOpen) }>{ props.buttonText }</Button>
+            {props.button !== 'none' && <Button type={ props.button } className={ props.classNameButton } onClick={ () => setIsOpen(!isOpen) }>{ props.buttonText }</Button>}
             
             <Modal
                 isOpen={isOpen}
