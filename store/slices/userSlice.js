@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from "next-redux-wrapper";
 
-import { login as userLogin } from '@api/user';
+import { login as userLogin, signup as userSignup } from '@api/user';
 
 const initUserState = {
     info: null,
@@ -39,9 +39,19 @@ export const { setLoading, setInfo, setTest } = userSlice.actions;
 export const selectInfo = (state) => state.user.info;
 export const selectLoading = (state) => state.user.loading;
 
-export const login = (login, password) => async dispatch => {
+export const login = (data) => async dispatch => {
     dispatch(userSlice.actions.setLoading(true));
-    userLogin({ login, password })
+    userLogin(data)
+        .then(res => {
+            console.log(res);
+            dispatch(userSlice.actions.setInfo(res.data));
+        })
+        .catch(err => console.error(err))
+        .finally(() => dispatch(userSlice.actions.setLoading(false)));
+};
+export const signup = (data) => async dispatch => {
+    dispatch(userSlice.actions.setLoading(true));
+    userSignup(data)
         .then(res => {
             console.log(res);
             dispatch(userSlice.actions.setInfo(res.data));

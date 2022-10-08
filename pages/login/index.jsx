@@ -1,36 +1,65 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { login, selectInfo, selectLoading } from '@store/slices/userSlice';
+import {
+	login as loginApi,
+	signup as signupApi,
+	selectInfo,
+	selectLoading,
+} from '@store/slices/userSlice';
 
-import { LoginForm } from './components';
+import { Button } from '@components';
+import { LoginForm, SignUpForm } from './components';
 
 import { LoginIcon } from './LoginIcon';
 import styles from './style.module.scss';
+import { toClassName } from '@utils/toClassName';
 
 const LoginPage = () => {
+	const [signup, setSignup] = useState(false);
+
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const loading = useSelector(selectLoading);
 	const info = useSelector(selectInfo);
 
 	const _login = (data) => {
-		console.log(data);
-		dispatch(login(data));
+		dispatch(loginApi(data));
+	};
+
+	const _signup = (data) => {
+		dispatch(signupApi(data));
 	};
 
 	useEffect(() => {
-		console.log(1, info);
 		if (info !== null) {
 			router.push('/tasks');
 		}
 	}, [info]);
 
 	return (
-		<div className={styles.root}>
-			<LoginIcon className={styles.icon} />
-			<LoginForm onSubmit={(data) => _login(data)} loading={loading} />
+		<div className={toClassName(styles.root, signup && styles.root_signup)}>
+			<LoginIcon
+				className={toClassName(styles.icon, signup && styles.icon_mini)}
+			/>
+			{signup ? (
+				<SignUpForm
+					onSubmit={(data) => _signup(data)}
+					onCancel={() => setSignup(false)}
+					loading={loading}
+				/>
+			) : (
+				<>
+					<LoginForm
+						onSubmit={(data) => _login(data)}
+						loading={loading}
+					/>
+					<Button type='text' onClick={() => setSignup(true)}>
+						Зарегистрироваться
+					</Button>
+				</>
+			)}
 		</div>
 	);
 };
