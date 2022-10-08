@@ -23,8 +23,10 @@
         }
     }
     &_description {
+        position: absolute;
         margin: 10px 0 0 0;
         font-size: 12px;
+        top: 38px;
     }
     & input {
         background: $white;
@@ -62,4 +64,9 @@
         gap: 5px;
         font-size: 12px;
     }
+}
+
+.wrapper {
+    position: relative;
+    height: 50px;
 }

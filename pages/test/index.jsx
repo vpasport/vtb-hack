@@ -46,7 +46,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
 	(store) =>
 		async ({ params }) => {
 			await store.dispatch(getOfferById(0));
-
+			console.log(store.getState());
 			return {
 				props: {},
 			};

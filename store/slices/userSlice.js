@@ -5,7 +5,8 @@ import { login as userLogin } from '@api/user';
 
 const initUserState = {
     info: null,
-    loading: false
+    loading: false,
+    test: false
 };
 
 export const userSlice = createSlice({
@@ -17,17 +18,23 @@ export const userSlice = createSlice({
         },
         setLoading: (state, { payload }) => {
             state.loading = payload;
+        },
+        setTest: (state, { payload }) => {
+            state.test = payload;
         }
     },
     extraReducers: {
-        [HYDRATE]: (state, action) => ({
-            ...state,
-            ...action.payload.user,
-        }),
+        [HYDRATE]: (state, action) => {
+            console.log(1, state, action);
+            return {
+                ...state,
+                ...action.payload.user,
+            };
+        },
     },
 });
 
-export const { setLoading, setInfo } = userSlice.actions;
+export const { setLoading, setInfo, setTest } = userSlice.actions;
 
 export const selectInfo = (state) => state.user.info;
 export const selectLoading = (state) => state.user.loading;

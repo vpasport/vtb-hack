@@ -16,42 +16,22 @@ const DefaultInput = ({
 		: styles.input;
 
 	return (
-		<>
-			{props.description && (
-				<div>
-					<div className={toClassName(stylesInput, className)}>
-						{!!LeftIcon && (
-							<LeftIcon className={styles.input_icon__left} />
-						)}
-						<input type={type} {...props} />
-						{!!RightIcon && (
-							<RightIcon className={styles.input_icon__right} />
-						)}
-					</div>
-					<p
-						className={toClassName(
-							styles.input_description,
-							descriptionClassName
-						)}>
-						{props.description}
-					</p>
-				</div>
-			)}
-			{!props.description && (
-				<div
-					className={toClassName(styles['input-wrapper'], className)}>
-					<div className={stylesInput}>
-						{!!LeftIcon && (
-							<LeftIcon className={styles.input_icon__left} />
-						)}
-						<input type={type} {...props} />
-						{!!RightIcon && (
-							<RightIcon className={styles.input_icon__right} />
-						)}
-					</div>
-				</div>
-			)}
-		</>
+		<div className={toClassName(styles.wrapper, className)}>
+			<div className={stylesInput}>
+				{!!LeftIcon && <LeftIcon className={styles.input_icon__left} />}
+				<input type={type} {...props} />
+				{!!RightIcon && (
+					<RightIcon className={styles.input_icon__right} />
+				)}
+			</div>
+			<p
+				className={toClassName(
+					styles.input_description,
+					descriptionClassName
+				)}>
+				{props.description}
+			</p>
+		</div>
 	);
 };
 
