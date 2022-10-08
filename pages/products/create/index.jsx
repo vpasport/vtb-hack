@@ -1,15 +1,9 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import { getProductById } from '@api/products';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { useFormik } from 'formik';
 
-import {
-	selectProductById,
-	setFullInfoInProduct,
-	editProduct,
-} from '@store/slices/productsSlice';
+import { editProduct } from '@store/slices/productsSlice';
 
 import { Button, Input, TextEditor } from '@components';
 import { useNotifications } from '@hooks';
@@ -17,24 +11,20 @@ import { useNotifications } from '@hooks';
 import styles from './style.module.scss';
 import { toClassName } from '@utils/toClassName';
 
-const EditProduct = ({ productInfo = {} }) => {
+const CreatePage = () => {
 	const router = useRouter();
 	const { pushNotifications } = useNotifications();
-	const fullInfo = useSelector(selectProductById(productInfo.id));
 
 	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(setFullInfoInProduct(productInfo.id));
-	}, [productInfo]);
 
 	const formik = useFormik({
 		initialValues: {
 			image: null,
-			description: fullInfo.description,
-			count: fullInfo.count,
-			title: fullInfo.title,
-			price: fullInfo.price,
+			description: '',
+			count: 0,
+			title: '',
+			price: 0,
+			isNFT: false,
 		},
 		validate: (data) => {
 			const errors = {};
@@ -93,7 +83,6 @@ const EditProduct = ({ productInfo = {} }) => {
 					<div className={styles['form-top-left']}>
 						<Input
 							type='file'
-							initValue={fullInfo.imageURL}
 							onChange={(value) =>
 								formik.setFieldValue('image', value)
 							}
@@ -127,6 +116,15 @@ const EditProduct = ({ productInfo = {} }) => {
 							onChange={formik.handleChange}
 							description={formik.errors.price}
 						/>
+						<Input
+                            
+							type='switch'
+							value={formik.values.isNFT}
+							text='NFT'
+							onChange={({ target: { checked } }) =>
+								formik.setFieldValue('isNFT', checked)
+							}
+						/>
 					</div>
 				</div>
 				<TextEditor
@@ -144,21 +142,4 @@ const EditProduct = ({ productInfo = {} }) => {
 	);
 };
 
-export const getServerSideProps = async ({ params: { id }, res }) => {
-	let result = await getProductById(id);
-
-	if (false) {
-		res.writeHead(301, { Location: '/404' });
-		res.end();
-
-		return true;
-	}
-
-	return {
-		props: {
-			productInfo: result.data,
-		},
-	};
-};
-
-export default EditProduct;
+export default CreatePage;

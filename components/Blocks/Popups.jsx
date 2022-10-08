@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Popup, Island } from '@components';
 
-import styles from '../style.module.scss'
+import styles from './style.module.scss'
 
 const PopupBlock = () => {
 	const [progress, setProgress] = useState(0);

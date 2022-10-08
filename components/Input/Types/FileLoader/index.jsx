@@ -49,7 +49,8 @@ const FileLoader = ({
 	return (
 		<div className={styles.file}>
 			<div ref={preview} className={styles.file_preview}>
-				{!!result.file || result.url === initValue ? (
+				{!!result.file ||
+				(result.url === initValue && initValue !== '') ? (
 					<div className={styles.file_preview__content}>
 						<img
 							className={styles['file_preview__content--img']}
