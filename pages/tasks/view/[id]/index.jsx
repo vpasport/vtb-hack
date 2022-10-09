@@ -26,7 +26,7 @@ const CreatePage = ({ fullTask = {} }) => {
 		<div className={styles.root}>
 			<ToolBar
 				onCreate={() => router.push('/tasks/create')}
-				onEdit={() => router.push('/tasks/edit')}
+				onEdit={() => router.push(router.asPath + '/edit')}
 			/>
 			{task.achievement ? (
 				<div className={styles.task}>
