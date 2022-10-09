@@ -42,8 +42,8 @@ const LoginForm = ({ onSubmit = () => {}, loading = false }) => {
 				<Input
 					className={toClassName(
 						styles['form-input-container-input'],
-						formik.errors.login &&
-							styles['form-input-container-input_error']
+						// formik.errors.login &&
+						// 	styles['form-input-container-input_error']
 					)}
 					type='default'
 					typedefault='text'
@@ -58,8 +58,8 @@ const LoginForm = ({ onSubmit = () => {}, loading = false }) => {
 				<Input
 					className={toClassName(
 						styles['form-input-container-input'],
-						formik.errors.login &&
-							styles['form-input-container-input_error']
+						// formik.errors.login &&
+						// 	styles['form-input-container-input_error']
 					)}
 					type='default'
 					typedefault='password'

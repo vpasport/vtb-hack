@@ -45,7 +45,7 @@ export const login = (data) => async dispatch => {
     dispatch(userSlice.actions.setLoading(true));
     userLogin(data)
         .then(res => {
-            console.log(res);
+            // console.log(res);
             dispatch(userSlice.actions.setInfo(res.data));
         })
         .catch(err => console.error(err))
