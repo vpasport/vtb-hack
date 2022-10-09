@@ -79,7 +79,7 @@ const CreatePage = () => {
 
 	return (
 		<div className={styles.root}>
-			<h1>Редактирование продукта:</h1>
+			<h1>Создание задачи:</h1>
 			<form
 				className={styles.form}
 				onSubmit={(e) => {

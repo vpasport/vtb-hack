@@ -30,27 +30,22 @@ const EditProduct = ({ productInfo = {} }) => {
 
 	const formik = useFormik({
 		initialValues: {
-			image: null,
-			description: fullInfo.description,
-			count: fullInfo.count,
-			title: fullInfo.title,
-			price: fullInfo.price,
 		},
 		validate: (data) => {
 			const errors = {};
 
-			if (!data.description.replace(/<\s*a[^>]*>|<\s*\/\s*a>/g, '')) {
-				errors.description = 'Необходимо заполнить значения';
-			}
-			if (!data.title) {
-				errors.title = 'Необходимо заполнить значения';
-			}
-			if (!data.price || data.price < 0) {
-				errors.price = 'Необходимо заполнить значения';
-			}
-			if (!data.count || data.count < 0) {
-				errors.price = 'Необходимо заполнить значения';
-			}
+			// if (!data.description.replace(/<\s*a[^>]*>|<\s*\/\s*a>/g, '')) {
+			// 	errors.description = 'Необходимо заполнить значения';
+			// }
+			// if (!data.title) {
+			// 	errors.title = 'Необходимо заполнить значения';
+			// }
+			// if (!data.price || data.price < 0) {
+			// 	errors.price = 'Необходимо заполнить значения';
+			// }
+			// if (!data.count || data.count < 0) {
+			// 	errors.price = 'Необходимо заполнить значения';
+			// }
 
 			return errors;
 		},
@@ -82,7 +77,7 @@ const EditProduct = ({ productInfo = {} }) => {
 
 	return (
 		<div className={styles.root}>
-			<h1>Редактирование продукта:</h1>
+			<h1>Редактирование задачи:</h1>
 			<form
 				className={styles.form}
 				onSubmit={(e) => {
@@ -93,7 +88,6 @@ const EditProduct = ({ productInfo = {} }) => {
 					<div className={styles['form-top-left']}>
 						<Input
 							type='file'
-							initValue={fullInfo.imageURL}
 							onChange={(value) =>
 								formik.setFieldValue('image', value)
 							}
