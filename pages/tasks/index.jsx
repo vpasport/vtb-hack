@@ -6,14 +6,14 @@ import { Tasks } from '@components';
 import {
 	getTasks,
 	selectLoadingTasks,
-	selectTask,
+	selectTasks,
 } from '@store/slices/tasksSlice';
 
 import styles from './style.module.scss';
 
 const TasksPage = () => {
 	const loading = useSelector(selectLoadingTasks);
-	const tasks = useSelector(selectTask);
+	const tasks = useSelector(selectTasks);
 
 	const dispatch = useDispatch();
 

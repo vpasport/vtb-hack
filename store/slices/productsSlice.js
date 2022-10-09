@@ -56,11 +56,11 @@ export const productsSlice = createSlice({
             };
         },
         addNewProduct: (state, { image, ...payload }) => {
-            const imageURL = URL.createObjectURL(image);
+            // const imageURL = URL.createObjectURL(image);
 
             state.products.unshift({
                 id: uuid(),
-                imageURL,
+                imageURL: 'https://img1.akspic.ru/crops/7/8/8/9/6/169887/169887-gorod-zdanie-purpur-tsvetnoy-liniya_gorizonta-7680x4320.jpg',
                 ...payload
             });
         }
