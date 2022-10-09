@@ -26,8 +26,8 @@ const LoginPage = () => {
 		dispatch(loginApi(data));
 	};
 
-	const _signup = (data) => {
-		dispatch(signupApi(data));
+	const _signup = (reg, data) => {
+		dispatch(signupApi({ reg, data, callback: () => setSignup(false) }));
 	};
 
 	useEffect(() => {

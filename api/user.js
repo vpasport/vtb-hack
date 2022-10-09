@@ -7,9 +7,22 @@ const login = (data) => {
     return authApi.get(`/auth/login?${params}`);
 };
 
+const register = (data) => {
+    const params = new URLSearchParams(data);
+    return authApi.get(`/auth/register?${params}`);
+};
+
 const getUserByID = (id) => {
     return userApi.get(`/user_service/users/${id}`);
 };
+
+const register2 = (data) => {
+    return userApi.post(`/user_service/users`, data, {
+        headers: data.getHeaders()
+    });
+};
+
+
 
 const signup = (data) => {
     return new Promise((res) =>
@@ -57,6 +70,8 @@ const getUsers = () => {
 
 export {
     login,
+    register,
+    register2,
     signup,
     getUsers,
     getUserByID

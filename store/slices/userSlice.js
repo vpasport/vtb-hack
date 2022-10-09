@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from "next-redux-wrapper";
 
-import { getUserByID, login as userLogin, signup as userSignup } from '@api/user';
+import {
+    getUserByID,
+    login as userLogin,
+    signup as userSignup,
+    register,
+    register2
+} from '@api/user';
 
 const _user = {
     "id": 1,
@@ -45,7 +51,7 @@ export const userSlice = createSlice({
         editUser: (state, { payload: { id, ...payload } }) => {
             const idx = state.users.findIndex(el => el.id === id);
             if (idx !== -1) {
-                const tmp = {...payload };
+                const tmp = { ...payload };
                 state.users[idx] = {
                     ...state.users[idx],
                     ...tmp
@@ -105,24 +111,28 @@ export const login = (logpass) =>
         }
     };
 
-export const signup = (data) => async dispatch => {
-    dispatch(userSlice.actions.setLoading(true));
-    userSignup(data)
-        .then(res => {
-            console.log(res);
-            dispatch(userSlice.actions.setInfo(res.data));
-        })
-        .catch(err => console.error(err))
-        .finally(() => dispatch(userSlice.actions.setLoading(false)));
-};
+export const signup = ({ reg, fd, callback = () => { } }) =>
+    async dispatch => {
+        dispatch(userSlice.actions.setLoading(true));
+        try {
+            const { data: { result: { id } } } = await register(reg);
+            fd.append('id', id);
+            const { data: user } = await register2(fd);
+            callback();
+        } catch (e) {
+            console.log(e);
+        } finally {
+            dispatch(userSlice.actions.setLoading(true));
+        }
+    };
 
 
-export const editUser = ({ callback = () => {}, ...editedUser }) =>
+export const editUser = ({ callback = () => { }, ...editedUser }) =>
     async dispatch => {
         return new Promise(res => {
-                dispatch(userSlice.actions.editUser(editedUser));
-                setTimeout(() => res(), 1000);
-            })
+            dispatch(userSlice.actions.editUser(editedUser));
+            setTimeout(() => res(), 1000);
+        })
             .then(() => callback('success'))
             .catch((error) => {
                 console.error(error);

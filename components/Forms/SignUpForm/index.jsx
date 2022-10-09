@@ -47,7 +47,7 @@ const SignUpForm = ({
 				error.email = 'Некорректный email';
 			}
 			if (!data.department) {
-				error.lastName = 'Некорректное название департамента';
+				error.department = 'Некорректное название департамента';
 			}
 			if (!data.date || moment(data.date).year() > 2005) {
 				error.date = 'Некорректная дата рождения';
@@ -64,8 +64,21 @@ const SignUpForm = ({
 			return error;
 		},
 		onSubmit: (data) => {
-			console.log(data);
-			// onSubmit();
+			const reg = {
+				login: data.login,
+				password: data.password,
+			};
+
+			const formData = new FormData();
+			formData.append('firstName', data.firstName);
+			formData.append('lastName', data.lastName);
+			formData.append('description', data.description);
+			formData.append('email', data.email);
+			formData.append('date', data.date);
+			formData.append('avatar', data.image.file, data.image.name);
+			formData.append('department', data.department);
+
+			onSubmit(reg, formData);
 		},
 	});
 
