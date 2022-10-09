@@ -24,8 +24,11 @@ const Products = ({ cards = [], loading = false }) => {
 						imageURL={card.imageURL}
 						tittle={card.title}
 						description={card.description}
-						userAvatar={card.user.userAvatar}
-						userName={card.user.userName}
+						userAvatar={
+							card.user?.userAvatar ||
+							'https://sun9-70.userapi.com/impg/_d3jGXuFnEspdPnqQfr-HYiyLeW792auSXffTg/KJaeZbAlMfM.jpg?size=2560x1707&quality=95&sign=8c7b1be6e9a2ed435a716b64fdb68925&type=album'
+						}
+						userName={card.user?.userName || 'Тест тест'}
 						price={card.price}
 						onReedMore={() => router.push(`/products/view/${id}`)}
 						onUserClick={() =>
