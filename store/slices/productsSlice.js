@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { v4 as uuid } from 'uuid';
 
 import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from "next-redux-wrapper";
@@ -53,6 +54,15 @@ export const productsSlice = createSlice({
                     ...tmp
                 };
             };
+        },
+        addNewProduct: (state, { image, ...payload }) => {
+            const imageURL = URL.createObjectURL(image);
+
+            state.products.unshift({
+                id: uuid(),
+                imageURL,
+                ...payload
+            });
         }
     },
     extraReducers: {
@@ -105,9 +115,21 @@ export const deleteProduct = ({ id = '', callback = () => { } }) =>
 
 export const editProduct = ({ callback = () => { }, ...editedProduct }) =>
     async dispatch => {
-        console.log(2);
         return new Promise(res => {
             dispatch(productsSlice.actions.editProduct(editedProduct));
+            setTimeout(() => res(), 1000);
+        })
+            .then(() => callback('success'))
+            .catch((error) => {
+                console.error(error);
+                callback('error');
+            });
+    };
+
+export const addProduct = ({ callback = () => { }, ...newProduct }) =>
+    async dispatch => {
+        return new Promise(res => {
+            dispatch(productsSlice.actions.addNewProduct(newProduct));
             setTimeout(() => res(), 1000);
         })
             .then(() => callback('success'))

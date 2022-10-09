@@ -99,7 +99,7 @@ const Product = ({ productInfo = {} }) => {
 				<>
 					<ToolBar
 						onEdit={() => router.push(router.asPath + '/edit')}
-						onCreate={() => router.push('/protucts/edit')}
+						onCreate={() => router.push('/products/create')}
 						onDelete={() => deleteProduct()}
 					/>
 					<div className={styles['image-container']}>
