@@ -5,7 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUserByID } from '@api/user';
 
 import {
-	selectUserById
+	selectUserById,
+	editUser
 } from '@store/slices/userSlice';
 
 import { useNotifications } from '@hooks';
@@ -51,7 +52,8 @@ const EditUser = ({userInfo = {}}) => {
 			if (!data.first_name) {
 				errors.first_name = 'Необходимо заполнить значения';
 			}
-			if (!data.phone_number.replace('+','').length !== 11 ) {
+			
+			if (data.phone_number.length !== 11 ) {
 				if (data.phone_number) errors.phone_number = 'Некорректно указан номер телефона';
 				else errors.phone_number = 'Необходимо заполнить значения';
 			}
@@ -62,7 +64,7 @@ const EditUser = ({userInfo = {}}) => {
 		onSubmit: (data) => {
 			dispatch(
 				editUser({
-					...user.id,
+					id: user.id,
 					info: {
 						...user.info,
 						...data
@@ -89,7 +91,7 @@ const EditUser = ({userInfo = {}}) => {
 	});
 
 	return (
-		<div className={styles.root}>
+		<div className={ styles.root }>
 			<h1>Редактирование информации о пользователе:</h1>
 			<form
 				className={styles.form}
@@ -101,17 +103,16 @@ const EditUser = ({userInfo = {}}) => {
 					<div className={styles['form-top-left']}>
 						<Input
 							type='file'
-							initValue={user.info.avatar}
-							onChange={(value) =>
-								formik.setFieldValue('avatar', value)
-							}
+							initValue={user.info.avatar.url}
+							onChange={ (value) => formik.setFieldValue('avatar', value)}
+							
 						/>
 					</div>
 					<div className={styles['form-top-right']}>
 						<Input
 							type='default'
 							typedefault='text'
-							placeholder='Имя пользователя'
+							placeholder='Username'
 							name='username'
 							value={formik.values.username}
 							onChange={formik.handleChange}
@@ -121,7 +122,7 @@ const EditUser = ({userInfo = {}}) => {
 							type='default'
 							typedefault='text'
 							placeholder='First name'
-							name='firstname'
+							name='first_name'
 							value={formik.values.first_name}
 							onChange={formik.handleChange}
 							description={formik.errors.first_name}
@@ -130,7 +131,7 @@ const EditUser = ({userInfo = {}}) => {
 							type='default'
 							typedefault='text'
 							placeholder='Last name'
-							name='lastname'
+							name='last_name'
 							value={formik.values.last_name}
 							onChange={formik.handleChange}
 							description={formik.errors.last_name}
@@ -139,7 +140,7 @@ const EditUser = ({userInfo = {}}) => {
 							type='default'
 							typedefault='text'
 							placeholder='Departament'
-							name='departament'
+							name='department'
 							value={formik.values.department}
 							onChange={formik.handleChange}
 							description={formik.errors.department}
@@ -148,7 +149,7 @@ const EditUser = ({userInfo = {}}) => {
 							type='default'
 							typedefault='text'
 							placeholder='Phone number'
-							name='phone'
+							name='phone_number'
 							value={formik.values.phone_number}
 							onChange={formik.handleChange}
 							description={formik.errors.phone_number}
@@ -158,7 +159,7 @@ const EditUser = ({userInfo = {}}) => {
 							placeholder='Birthday'
 							name='birthday'
 							value={formik.values.birthday}
-							onChange={formik.handleChange}
+							onChange={(val) => formik.setFieldValue('birthday', val)}
 						/>
 
 							
@@ -172,7 +173,7 @@ const EditUser = ({userInfo = {}}) => {
 							styles['form-input-container-editor_error']
 					)}
 					initValue={formik.values.description}
-					onChange={(val) => formik.setFieldValue('description', val)}
+					onChange={ (val) => formik.setFieldValue('description', val)}
 				/>
 				<Button className={styles['form-button']}>Сохранить</Button>
 			</form>

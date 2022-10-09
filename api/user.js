@@ -33,10 +33,12 @@ const mockArray = () => Array(Math.round(Math.random() * 20 + 2))
         info: {
             username: 'username_user_418',
             email: 'usermail_2022@gmail.com',
-            avatar: 'https://th-thumbnailer.cdn-si-edu.com/jlWcmkkwETB7aONf_PpzTyHS0D8=/fit-in/1072x0/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/97/2c/972c4531-0552-4a49-b51b-4cdb5066bd1d/tacc1157_05_faceright_10k_rgb.jpg',
+            avatar: {
+                url: 'https://th-thumbnailer.cdn-si-edu.com/jlWcmkkwETB7aONf_PpzTyHS0D8=/fit-in/1072x0/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/97/2c/972c4531-0552-4a49-b51b-4cdb5066bd1d/tacc1157_05_faceright_10k_rgb.jpg'
+            },
             department: 'ПВииВо ВЛРОВ иВОРИВ',
-            birthday: '31.02.2566',
-            phone_number: '+76565615166464',
+            birthday: '08.12.1999',
+            phone_number: '86566151664',
             last_name: 'Петровна',
             first_name: 'Антонина',
             description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam aperiam ab
@@ -63,10 +65,12 @@ const mockItem = (id) => ({
     info: {
         username: 'username_user_418',
         email: 'usermail_2022@gmail.com',
-        avatar: 'https://th-thumbnailer.cdn-si-edu.com/jlWcmkkwETB7aONf_PpzTyHS0D8=/fit-in/1072x0/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/97/2c/972c4531-0552-4a49-b51b-4cdb5066bd1d/tacc1157_05_faceright_10k_rgb.jpg',
+        avatar: {
+            url: 'https://th-thumbnailer.cdn-si-edu.com/jlWcmkkwETB7aONf_PpzTyHS0D8=/fit-in/1072x0/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/97/2c/972c4531-0552-4a49-b51b-4cdb5066bd1d/tacc1157_05_faceright_10k_rgb.jpg'
+        },
         department: 'ПВииВо ВЛРОВ иВОРИВ',
-        birthday: '31.02.2566',
-        phone_number: '+76566151664',
+        birthday: '08.12.1999',
+        phone_number: '86566151664',
         last_name: 'Петровна',
         first_name: 'Антонина',
         description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam aperiam ab

@@ -18,10 +18,7 @@ const User = ({userInfo = {}}) => {
 	const router = useRouter();
     const dispatch = useDispatch();
     
-    console.log('userInfo', userInfo)
-
     const user = useSelector(selectUserById(userInfo.id));
-    console.log(user)
     return (
         <>
             <ToolBar
@@ -39,7 +36,7 @@ const User = ({userInfo = {}}) => {
                                     !user.info.avatar ?
                                         <Svg type='avatar' className={  toClassName(styles['user-page_card__content'], styles['avatar--empty']) } />
                                         :
-                                        <img  src={ user.info.avatar } alt={ `Аватар ${ user.info.username }` } />
+                                        <img  src={ user.info.avatar.url } alt={ `Аватар ${ user.info.username }` } />
                                 }
                             </div>
                             <div className={ toClassName(styles['user-page_card__content'], styles.information) }>
