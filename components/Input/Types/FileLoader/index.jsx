@@ -25,7 +25,6 @@ const FileLoader = ({
 
 		if (file) {
 			const url = URL.createObjectURL(file);
-
 			setResult({
 				name: file.name,
 				url,

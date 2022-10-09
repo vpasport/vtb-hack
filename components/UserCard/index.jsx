@@ -15,7 +15,7 @@ const UserCard = ({info = {}, onUserClick }) =>
                     !info.avatar && <Svg type='avatar' className={ styles['user-card_avatar--empty'] } />
                 }
                 {
-                    info.avatar && <img src={ info.avatar } alt={`Аватар ${info.username}`} />
+                    info.avatar && <img src={ info.avatar.url } alt={`Аватар ${info.username}`} />
                 }
             </div>
             <div className={ styles['user-card_info'] }>
