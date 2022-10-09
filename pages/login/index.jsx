@@ -9,9 +9,8 @@ import {
 	selectLoading,
 } from '@store/slices/userSlice';
 
-import { Button, Forms } from '@components';
+import { Button, Forms, Svg } from '@components';
 
-import { LoginIcon } from './LoginIcon';
 import styles from './style.module.scss';
 import { toClassName } from '@utils/toClassName';
 
@@ -39,7 +38,8 @@ const LoginPage = () => {
 
 	return (
 		<div className={toClassName(styles.root, signup && styles.root_signup)}>
-			<LoginIcon
+			<Svg
+				type='loginicon'
 				className={toClassName(styles.icon, signup && styles.icon_mini)}
 			/>
 			{signup ? (
