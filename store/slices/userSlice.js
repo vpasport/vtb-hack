@@ -1,7 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from "next-redux-wrapper";
 
-import { login as userLogin, signup as userSignup } from '@api/user';
+import { getUserByID, login as userLogin, signup as userSignup } from '@api/user';
+
+const _user = {
+    "id": 1,
+    "firstName": "andrey",
+    "lastName": "popkov",
+    "email": "popkovand@mail.com",
+    "phoneNumber": "+79087777777",
+    "description": "im bitch",
+    "avatar": "/tmp/var/public/users/1/me.jpeg",
+    "birthday": "2020-01-01T00:00:00Z",
+    "department": "developers"
+};
 
 const initUserState = {
     info: null,
@@ -41,16 +53,21 @@ export const selectLoading = (state) => state.user.loading;
 
 export const selectUserById = (id) => (state) => state.users.users.find(el => el.id === id);
 
-export const login = (data) => async dispatch => {
-    dispatch(userSlice.actions.setLoading(true));
-    userLogin(data)
-        .then(res => {
-            // console.log(res);
-            dispatch(userSlice.actions.setInfo(res.data));
-        })
-        .catch(err => console.error(err))
-        .finally(() => dispatch(userSlice.actions.setLoading(false)));
-};
+export const login = (logpass) =>
+    async dispatch => {
+        dispatch(userSlice.actions.setLoading(true));
+        try {
+            const { data: { result: { id } } } = await userLogin(logpass);
+            const { data } = await getUserByID(id);
+
+            dispatch(userSlice.actions.setInfo(data));
+        } catch (e) {
+            console.error(e);
+        } finally {
+            dispatch(userSlice.actions.setLoading(false));
+        }
+    };
+
 export const signup = (data) => async dispatch => {
     dispatch(userSlice.actions.setLoading(true));
     userSignup(data)

@@ -23,6 +23,8 @@ const SignUpForm = ({
 			description: '',
 			email: '',
 			date: new Date(),
+			image: null,
+			department: '',
 		},
 		validate: (data) => {
 			const error = {};
@@ -44,12 +46,10 @@ const SignUpForm = ({
 			) {
 				error.email = 'Некорректный email';
 			}
+			if (!data.department) {
+				error.lastName = 'Некорректное название департамента';
+			}
 			if (!data.date || moment(data.date).year() > 2005) {
-				pushNotifications({
-					type: 'error',
-					header: 'Ошибка',
-					description: 'Некорректная дата рождения',
-				});
 				error.date = 'Некорректная дата рождения';
 			}
 			if (!data.password) {
@@ -63,7 +63,10 @@ const SignUpForm = ({
 
 			return error;
 		},
-		onSubmit: onSubmit,
+		onSubmit: (data) => {
+			console.log(data);
+			// onSubmit();
+		},
 	});
 
 	return (
@@ -78,6 +81,12 @@ const SignUpForm = ({
 					<Loader />
 				</div>
 			)}
+			<div className={styles['form-input-container']}>
+				<Input
+					type='file'
+					onChange={(value) => formik.setFieldValue('image', value)}
+				/>
+			</div>
 			<div className={styles['form-input-container']}>
 				<Input
 					className={toClassName(
@@ -154,6 +163,21 @@ const SignUpForm = ({
 					value={formik.values.email}
 					onChange={formik.handleChange}
 					description={formik.errors.email}
+				/>
+			</div>
+			<div className={styles['form-input-container']}>
+				<Input
+					className={toClassName(
+						styles['form-input-container-input'],
+						formik.errors.department &&
+							styles['form-input-container-input_error']
+					)}
+					type='default'
+					placeholder='Department'
+					name='department'
+					value={formik.values.department}
+					onChange={formik.handleChange}
+					description={formik.errors.department}
 				/>
 			</div>
 			<div className={styles['form-input-container']}>

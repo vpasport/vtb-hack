@@ -1,14 +1,19 @@
 import axios from 'axios';
 
-export const api = axios.create({
-    baseURL: 'http://82.146.55.184',
+export const authApi = axios.create({
+    baseURL: 'http://localhost:8000',
     mode: 'no-cors',
-    headers: {
-        'Access-Control-Allow-Origin': '*',
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-    },
-    withCredentials: true,
-    credentials: 'same-origin',
-    crossdomain: true,
+    withCredentials: false,
+});
+
+export const marketApi = axios.create({
+    baseURL: 'http://localhost:8080',
+    mode: 'no-cors',
+    withCredentials: false,
+});
+
+export const userApi = axios.create({
+    baseURL: 'http://localhost:8081',
+    mode: 'no-cors',
+    withCredentials: false,
 });
