@@ -22,7 +22,7 @@ const UsersList = ({ users = [], loading = false }) => {
 						key={id}
 						info={ card.info}
 						onUserClick={() =>
-							router.push(`/users/${id}`)
+							router.push(`users/view/${id}`)
 						}
 					/>
 				))

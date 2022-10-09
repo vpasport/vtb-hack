@@ -28,7 +28,7 @@ const TaskLine = ({
 							header={task.title}
 							description={task.description}
 							buttonText='Открыть'
-							price={task.price}
+							price={task.award}
 							onButtonClick={() =>
 								router.push(`/tasks/view/${task.id}`)
 							}
