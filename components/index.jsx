@@ -16,4 +16,6 @@ export * as Forms from './Forms';
 export { ToolBar } from './Toolbar';
 export { User } from './User';
 export { Users } from './Users';
+export { UserCard } from './UserCard';
+export { UsersList } from './UsersList';
 export { Svg } from './Svg';

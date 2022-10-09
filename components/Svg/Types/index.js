@@ -6,3 +6,4 @@ export { Union as union } from './Union';
 export { Icon404 as error404 } from './Error404';
 export { MainPage as mainpage } from './MainPage';
 export { LoginIcon as loginicon } from './LoginIcon'
+export { Avatar as avatar } from './Avatar';
