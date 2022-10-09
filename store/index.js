@@ -1,1 +1,1 @@
-export { wrapper, store } from './store';
+export { wrapper } from './store';
