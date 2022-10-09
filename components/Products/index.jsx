@@ -27,7 +27,7 @@ const Products = ({ cards = [], loading = false }) => {
 						userAvatar={card.user.userAvatar}
 						userName={card.user.userName}
 						price={card.price}
-						onReedMore={() => router.push(`/products/${id}`)}
+						onReedMore={() => router.push(`/products/view/${id}`)}
 						onUserClick={() =>
 							router.push(`/users/${card.user.id}`)
 						}
