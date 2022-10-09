@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { useFormik } from 'formik';
 
-import { editProduct } from '@store/slices/productsSlice';
+import { addProduct } from '@store/slices/productsSlice';
 
 import { Button, Input, TextEditor } from '@components';
 import { useNotifications } from '@hooks';
@@ -30,24 +30,31 @@ const CreatePage = () => {
 			const errors = {};
 
 			if (!data.description.replace(/<\s*a[^>]*>|<\s*\/\s*a>/g, '')) {
-				errors.description = 'Необходимо заполнить значения';
+				errors.description = 'Необходимо заполнить описание';
 			}
 			if (!data.title) {
-				errors.title = 'Необходимо заполнить значения';
+				errors.title = 'Необходимо заполнить названия';
 			}
 			if (!data.price || data.price < 0) {
-				errors.price = 'Необходимо заполнить значения';
+				errors.price = 'Необходимо заполнить цену';
 			}
 			if (!data.count || data.count < 0) {
-				errors.price = 'Необходимо заполнить значения';
+				errors.count = 'Необходимо заполнить количество';
 			}
 
+			// Object.keys(errors).forEach((el) =>
+			// 	pushNotifications({
+			// 		type: 'error',
+			// 		header: 'Ошибка',
+			// 		description: errors[el],
+			// 	})
+			// );
 			return errors;
 		},
 		onSubmit: (data) => {
+			console.log(1);
 			dispatch(
-				editProduct({
-					...fullInfo,
+				addProduct({
 					...data,
 					callback: (type) => {
 						if (type === 'success') {
@@ -90,6 +97,7 @@ const CreatePage = () => {
 					</div>
 					<div className={styles['form-top-right']}>
 						<Input
+							className={formik.errors.title && styles.error}
 							type='default'
 							typedefault='text'
 							placeholder='Title'
@@ -99,6 +107,7 @@ const CreatePage = () => {
 							description={formik.errors.title}
 						/>
 						<Input
+							className={formik.errors.title && styles.error}
 							type='default'
 							typedefault='number'
 							placeholder='Count'
@@ -108,6 +117,7 @@ const CreatePage = () => {
 							description={formik.errors.count}
 						/>
 						<Input
+							className={formik.errors.title && styles.error}
 							type='default'
 							typedefault='number'
 							placeholder='Price'
@@ -117,7 +127,7 @@ const CreatePage = () => {
 							description={formik.errors.price}
 						/>
 						<Input
-                            
+							className={formik.errors.title && styles.error}
 							type='switch'
 							value={formik.values.isNFT}
 							text='NFT'
