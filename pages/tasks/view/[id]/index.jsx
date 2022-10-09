@@ -1,27 +1,18 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getFullTask } from '@api/tasks';
 import { selectTask, updateToFullTask } from '@store/slices/tasksSlice';
 
-import { Loader, Price, TextViewer, User } from '@components';
-
-const Users = dynamic(
-	() => import('@components/Users').then((mod) => mod.Users),
-	{
-		ssr: false,
-		loading: () => <Loader />,
-	}
-);
+import { Loader, Price, TextViewer, ToolBar, User } from '@components';
 
 import styles from './style.module.scss';
 import { toClassName } from '@utils/toClassName';
 
-const TaskPage = ({ fullTask = {} }) => {
+const CreatePage = ({ fullTask = {} }) => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 
@@ -33,6 +24,10 @@ const TaskPage = ({ fullTask = {} }) => {
 
 	return (
 		<div className={styles.root}>
+			<ToolBar
+				onCreate={() => router.push('/tasks/create')}
+				onEdit={() => router.push('/tasks/edit')}
+			/>
 			{task.achievement ? (
 				<div className={styles.task}>
 					<h1>{task.title}</h1>
@@ -129,4 +124,4 @@ export const getServerSideProps = async ({ params: { id }, res }) => {
 	};
 };
 
-export default TaskPage;
+export default CreatePage;

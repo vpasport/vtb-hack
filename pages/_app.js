@@ -1,4 +1,5 @@
 import NextNProgress from 'nextjs-progressbar';
+import { useRouter } from 'next/router';
 import { Provider } from 'react-redux';
 
 import { wrapper } from '@store';
@@ -10,6 +11,10 @@ import '@styles/globals.css';
 import '@styles/globals.scss';
 
 function MyApp({ Component, ...rest }) {
+  const router = useRouter();
+
+  console.log(router);
+
   const { store, props } = wrapper.useWrappedStore(rest);
 
   return (
