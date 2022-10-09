@@ -12,7 +12,7 @@ const slices = {};
 for (const slice in slicesArray) {
     slices[slicesArray[slice].name] = slicesArray[slice].reducer;
 }
-console.log("slices", slices)
+
 const rootReducer = combineReducers(slices);
 
 const reducer = (state, action) => {
@@ -35,6 +35,8 @@ const reducer = (state, action) => {
 //     });
 
 // const makeStore = () => store;
+
+let resetStore = () => { };
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -61,6 +63,9 @@ export const makeStore = ({ isServer }) => {
 
         const persistedReducer = persistReducer(persistConfig, reducer); // Create a new reducer with our existing reducer
 
+        resetStore = (state, action) =>
+            rootReducer(action.type === 'USER_LOGOUT' ? undefined : state, action);
+
         const store =
             configureStore({
                 reducer: persistedReducer,
@@ -76,4 +81,5 @@ export const makeStore = ({ isServer }) => {
     }
 };
 
+export { resetStore };
 export const wrapper = createWrapper(makeStore, { debug: isDev });
