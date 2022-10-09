@@ -23,4 +23,4 @@ export const routes = [
     }
 ];
 
-export const notShowing = ['/404', '/login'];
+export const notShowing = ['/404', '/login', '/', ''];

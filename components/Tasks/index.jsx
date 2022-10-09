@@ -30,7 +30,7 @@ const TaskLine = ({
 							buttonText='Открыть'
 							price={task.price}
 							onButtonClick={() =>
-								router.push(`/tasks/${task.id}`)
+								router.push(`/tasks/view/${task.id}`)
 							}
 						/>
 					))}
